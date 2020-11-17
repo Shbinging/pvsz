@@ -4,11 +4,11 @@
 
 void zombieNormal::Attack(int t){
     if ((t-setTime)%attackSpeed) return;
-    vector<node> f = Map.getList(x, y - 1);
+    //vector<node> f = Map.getList(x, y - 1);
     vector<node> g = Map.getList(x, y);
-    g.insert(g.end(), f.begin(), f.end());
+    //g.insert(g.end(), f.begin(), f.end());
     Forr(i, 0, g.size()){
-        if (g[i].p->getType() < 3){
+        if (g[i].p->getId() / 10 == 1){
             g[i].p->subHeart(attack);
             break;
         }
@@ -21,9 +21,9 @@ void zombieBasic::run(int t){
 }
 
 void zombieBasic::Move(int t){
-    vector<node> f = Map.getList(x, y - 1);
+    //vector<node> f = Map.getList(x, y - 1);
     vector<node> g = Map.getList(x, y);
-    g.insert(g.end(), f.begin(), f.end());
-    Forr(i, 0, g.size()) if (g[i].p->getType() < 3) return;
+    //g.insert(g.end(), f.begin(), f.end());
+    Forr(i, 0, g.size()) if (g[i].p->getId()/10 == 1) return;
     if ((t-setTime)%speed == 0 && t -setTime > 0) y -= 1; 
 }

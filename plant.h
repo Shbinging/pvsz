@@ -110,3 +110,15 @@ public:
     }
     void run(int t) {}
 };
+class plantWogua :public plantNormal {
+public:
+    plantWogua(location a, int t, MAP* m, shop* n) :plantNormal(a, t, *m, *n) {
+        money = 150;
+        heart = 30;
+        attack = 5;
+        speed = 2;
+        name = "Ÿ¡";
+        id = 12;
+    }
+    void run(int t);
+};

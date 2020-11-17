@@ -84,3 +84,14 @@ void plantShuangfa::run(int t)
         Map.push(x, y, getBullet(t));
     }
 }
+
+void plantWogua::run(int t)
+{
+    vector<node> f = Map.getlList(x, y);
+    Forr(i, 0, f.size()) {
+        if (f[i].p->getType() == 3) {
+            f[i].p->setDead();
+            setDead();
+        }
+    }
+}

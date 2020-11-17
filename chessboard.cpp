@@ -98,11 +98,11 @@ void chessboard::Play(int t){
     makeZombie(t);
     vector<object*> list;
     list = Map.getListAll();
-    Forr(k, 0, list.size()) if (list[k]->getId() / 10 == 2) list[k]->run(t);
+    Forr(k, 0, list.size()) if (!list[k]->isDead() && list[k]->getId() / 10 == 2) list[k]->run(t);
     list = Map.getListAll();
-    Forr(k, 0, list.size()) if (list[k]->getId() / 10 == 1) list[k]->run(t);
+    Forr(k, 0, list.size()) if (!list[k]->isDead() && list[k]->getId() / 10 == 1) list[k]->run(t);
     list = Map.getListAll();
-    Forr(k, 0, list.size()) if (list[k]->getId() / 10 == 0) list[k]->run(t);
+    Forr(k, 0, list.size()) if (!list[k]->isDead() && list[k]->getId() / 10 == 0) list[k]->run(t);
 }
 
 void chessboard::makeZombie(int t)
