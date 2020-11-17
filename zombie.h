@@ -3,34 +3,34 @@
 #include"object.h"
 #include"shop.h"
 class MAP;
-class zombieNormal: public object{
-    protected:
-        int score;
-        int attackSpeed;
-        MAP& Map;
-        shop& Shop;
-    public:
-        zombieNormal(location a, int t, MAP& m, shop& n):
+class zombieNormal : public object {
+protected:
+    int score;
+    int attackSpeed;
+    MAP& Map;
+    shop& Shop;
+public:
+    zombieNormal(location a, int t, MAP& m, shop& n) :
         object(a, t),
         Shop(n),
         Map(m)
-        {
-            type = 3;
-        }
-        void Attack(int t);
-        virtual void Move(){}
+    {
+        type = 3;
+    }
+    void Attack(int t);
+    virtual void Move() {}
 };
-class zombieBasic: public zombieNormal{
-    public:
-        zombieBasic(location a, int t, MAP* m, shop* n):zombieNormal(a, t, *m, *n){
-            attack = 5;
-            heart = 1;
-            speed = 5;
-            attackSpeed = 3;
-            id = 21;
-            score = 5;
-            name = "zombie";
-        }
+class zombieBasic : public zombieNormal {
+public:
+    zombieBasic(location a, int t, MAP* m, shop* n) :zombieNormal(a, t, *m, *n) {
+        attack = 5;
+        heart = 10;
+        speed = 3;
+        attackSpeed = 3;
+        id = 21;
+        score = 5;
+        name = "½©";
+    }
     void setDead() {
         live = 0;
         Shop.addScore(score);

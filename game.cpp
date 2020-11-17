@@ -14,20 +14,21 @@ void game::play(){
     int s = 0;
     status = 1;
     display();
+    bool f1;
     while(1){
         chess.Play(t);
         makePlant();
-        if (chess.isLose()){
+        if (chess.isLose()) {
             status = 3;
             break;
         }//lose
-        if (t > 100){
+        if (t > 100000) {
             status = 2;
             break;
         }//win
         s++;
-        Sleep(50); //printf("%d\n", s);
-        
+        //Sleep(50); //printf("%d\n", s);
+
         if (s % 10 == 0) {
             t++;
         }
@@ -45,6 +46,7 @@ void game::display(){
     Shop.display();
     Screen.print(getStatus());
     Screen.Draw();
+
 }
 
 string game::getStatus(){
@@ -54,7 +56,7 @@ string game::getStatus(){
     if (status == 3) return "lose!";
 }
 
-void game::makePlant() {
+bool game::makePlant() {
     static char ch = 0;
     static int state = 0;
     bool kbhit = 0;
@@ -82,7 +84,7 @@ void game::makePlant() {
             if (chess.checkEn()) {
                 state = 0;
                 Shop.Buy();
-                chess.makePlant(Shop.getBuyId(), t);
+                chess.makePlant(Shop.getBuyId(), t);         
             }
         }
         else state = 0;
@@ -107,4 +109,5 @@ void game::makePlant() {
     }
     ch = 0;
     if (kbhit) display();
+    return kbhit;
 }
