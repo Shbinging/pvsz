@@ -48,6 +48,7 @@ shop::shop(int t):shopPoint(1,2,1,1, this){//!!!
     pzCreator tmp;
     list = tmp.getPlantList();
     Sum = list.size() - 1;
+    shopPoint.setHL(1, Sum);
 }
 
 void shop::setDead(){
@@ -65,6 +66,7 @@ void shop::MoveCircle(string st){
 bool shop::checkEn(){
     return canBuy();
 }
+
 int shop::getBuyId(){
     return 9+shopPoint.getLocation().y;
 }

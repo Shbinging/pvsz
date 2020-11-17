@@ -24,12 +24,12 @@ class zombieBasic: public zombieNormal{
     public:
         zombieBasic(location a, int t, MAP* m, shop* n):zombieNormal(a, t, *m, *n){
             attack = 5;
-            heart = 1;
-            speed = 5;
+            heart = 10;
+            speed = 3;
             attackSpeed = 3;
             id = 21;
             score = 5;
-            name = "zombie";
+            name = "½©";
         }
     void setDead() {
         live = 0;

@@ -2,7 +2,7 @@
 #include"diag.h"
 void screen::Draw()
 {
-
+	
 	Forr(i, 0, height) {
 		Forr(j, 0, width) {
 			if (data[i][j] == '\t') {
@@ -12,6 +12,21 @@ void screen::Draw()
 			}
 		}
 	}
+	
+	/*
+	int jj = 0;
+	Forr(i, 0, height) {
+		jj = 0;
+		Forr(j, 0, width) {
+			if (data[i][j] == '\t') {
+				int j1 = ((j / 12) + 1) * 12;
+				jj = j1 - 1;
+				data[i][j] = ' ';
+			}
+			data1[i][jj] = data[i][j];
+			jj++;
+		}
+	}*/
 	//设置新的缓冲区为活动显示缓冲
 	if (!switchOver) {
 		for (int i = 0; i < height; i++) {
@@ -61,7 +76,7 @@ void screen::cls()
 {
 	i = 0;
 	j = 0;
-	memset(data, 0, sizeof(data));
+	For(i, 0, height) For(j, 0, width) data[i][j] = 0;
 }
 
 void screen::print(string st)

@@ -63,6 +63,10 @@ class shopCircle:public circle{
             ih = iih;
             il = iil;
         }
+        void setHL(int hh, int ll) {
+            h = hh;
+            l = ll;
+        }
         void Move(string st);
 };
 

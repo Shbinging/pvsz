@@ -9,6 +9,10 @@ object* pzCreator::createObject(int id, MAP& m, shop& n, location x,int t){
             switch(id){
                 case 10: p = new plantSun(x, t, &m, &n); break;
                 case 11: p = new plantWandou(x, t, &m, &n); break;
+                case 12: p = new plantHanbing(x, t, &m, &n); break;
+                case 13: p = new plantShuangfa(x, t, &m, &n); break;
+                case 14: p = new plantNut(x, t, &m, &n); break;
+                case 15: p = new plantNutHigh(x, t, &m, &n); break;
                 case 20: p = new zombieBasic(x, t, &m, &n); break;
             }
             return p;
@@ -24,6 +28,10 @@ vector<plantNormal*> pzCreator::getPlantList(){
             switch(i){
                 case 10: p = new plantSun(x, t, NULL, NULL); break;
                 case 11: p = new plantWandou(x, t, NULL, NULL); break;
+                case 12: p = new plantHanbing(x, t, NULL, NULL); break;
+                case 13: p = new plantShuangfa(x, t, NULL, NULL); break;
+                case 14: p = new plantNut(x, t, NULL, NULL); break;
+                case 15: p = new plantNutHigh(x, t, NULL, NULL); break;
             }
             list.push_back(p);
     }

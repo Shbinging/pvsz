@@ -18,7 +18,7 @@ private:
 public:
     game();
     void play();
-    void makePlant();
+    bool makePlant();
     void display();
     string getStatus();
 };

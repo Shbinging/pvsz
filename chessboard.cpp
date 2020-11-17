@@ -52,7 +52,17 @@ void chessboard::display(){
             else 
                 if (!list.size()) Screen.print("\t");
             else {
-                    Screen.print(list[0].p->getName());
+                    int s1 = 0;
+                    Forr(k, 0, list.size()) {
+                        if (s1 > 5) break;
+                        if (list[k].p->getId() / 10 == 1) Screen.print(list[k].p->getName());
+                        s1++;
+                    }
+                    Forr(k, 0, list.size()) {
+                        if (s1 > 5) break;
+                        if (list[k].p->getId() / 10 == 2) Screen.print(list[k].p->getName());
+                        s1++;
+                    }
                     Screen.print("\t"); 
             }
             Screen.print("|");
@@ -83,7 +93,11 @@ void chessboard::Play(int t){
     makeZombie(t);
     vector<object*> list;
     list = Map.getListAll();
-    Forr(k, 0, list.size()) list[k]->run(t);
+    Forr(k, 0, list.size()) if (list[k]->getId() / 10 == 2) list[k]->run(t);
+    list = Map.getListAll();
+    Forr(k, 0, list.size()) if (list[k]->getId() / 10 == 1) list[k]->run(t);
+    list = Map.getListAll();
+    Forr(k, 0, list.size()) if (list[k]->getId() / 10 == 0) list[k]->run(t);
 }
 
 void chessboard::makeZombie(int t)

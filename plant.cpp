@@ -16,7 +16,7 @@ void plantNormal::beAttack(){
 }
 
 bullet* plantWandou::getBullet(int t){
-    bullet * p = new bullet(location(x, y + 1), t, attack, Map);
+    bullet * p = new bullet(location(x, y), t, attack, Map);
     return p;
 }
 
@@ -28,7 +28,7 @@ bool plantWandou::isGetBullet(int t){
 
 void plantWandou::run(int t){
     if (!isDead() && isGetBullet(t)){ 
-        Map.push(x, y + 1, getBullet(t));
+        Map.push(x, y, getBullet(t));
     }
 }
 
@@ -42,4 +42,45 @@ int plantSun::getSun(int t){
 
 void plantSun::run(int t){
     if (isGetSun(t)) Shop.addMoney(getSun(t));
+}
+
+bullet* plantHanbing::getBullet(int t)
+{
+    bullet* p = new bulletBing(location(x, y), t, attack, Map);
+    return p;
+}
+
+bool plantHanbing::isGetBullet(int t)
+{
+    if ((t - setTime) % speed == 0)
+        return 1;
+    else return 0;
+}
+
+void plantHanbing::run(int t)
+{
+    if (!isDead() && isGetBullet(t)) {
+        Map.push(x, y, getBullet(t));
+    }
+}
+
+bullet* plantShuangfa::getBullet(int t)
+{
+    bullet* p = new bullet(location(x, y), t, attack, Map);
+    return p;
+}
+
+bool plantShuangfa::isGetBullet(int t)
+{
+    if ((t - setTime) % speed == 0)
+        return 1;
+    else return 0;
+}
+
+void plantShuangfa::run(int t)
+{
+    if (!isDead() && isGetBullet(t)) {
+        Map.push(x, y, getBullet(t));
+        Map.push(x, y, getBullet(t));
+    }
 }
