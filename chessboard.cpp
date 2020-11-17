@@ -24,58 +24,39 @@ chessboard::chessboard(int hh, int ll, shop& s) :
     t = 0;
     reset();
 }
-void chessboard::reset() {
+void chessboard::reset(){
     Map.clear();
     t = 0;
 }
 
-bool chessboard::isLose() {
-    vector<object*> list = Map.getListAll();
-    Forr(i, 0, list.size()) {
-        if (list[i]->getId() / 10 == 2 && list[i]->getLocation().y <= 0)
-            return 1;
+bool chessboard::isLose(){
+    vector<object*> list= Map.getListAll();
+    Forr(i, 0, list.size()){
+        if (list[i]->getId()/10 == 2 && list[i]->getLocation().y <=0 )
+         return 1;
     }
     return 0;
 }
 
-void chessboard::display() {
+void chessboard::display(){
     printLine('-');
-    For(i, 1, h) {
+    For(i, 1, h){
         Screen.print("|");
-        For(j, 1, l) {
+        For(j, 1, l){
             vector<node> list = Map.getList(i, j);
             string st;
-            if (!mapPoint.isDead() && mapPoint.getLocation().x == i && mapPoint.getLocation().y == j) {
+            if (!mapPoint.isDead() && mapPoint.getLocation().x == i && mapPoint.getLocation().y == j){
                 Screen.print(mapPoint.getName());
                 Screen.print("\t");
             }
-            else
+            else 
                 if (!list.size()) Screen.print("\t");
-<<<<<<< Updated upstream
-                else {
-=======
             else {
->>>>>>> Stashed changes
-                    int s1 = 0;
-                    Forr(k, 0, list.size()) {
-                        if (s1 > 5) break;
-                        if (list[k].p->getId() / 10 == 1) Screen.print(list[k].p->getName());
-                        s1++;
-                    }
-                    Forr(k, 0, list.size()) {
-                        if (s1 > 5) break;
-                        if (list[k].p->getId() / 10 == 2) Screen.print(list[k].p->getName());
-                        s1++;
-                    }
-<<<<<<< Updated upstream
-                    Screen.print("\t");
-                }
-=======
+                    Screen.print(list[0].p->getName());
                     Screen.print("\t"); 
             }
->>>>>>> Stashed changes
             Screen.print("|");
-        }
+        } 
         Screen.print("\n");
         printLine('-');
     }
@@ -88,13 +69,13 @@ void chessboard::makePlant(int id, int t) {
     Map.push(tmp.createObject(id, Map, Shop, mapPoint.getLocation(), t));
 }
 
-bool chessboard::checkEn() {
+bool chessboard::checkEn(){
     return mapPoint.checkEn();
 }
 
-void chessboard::Play(int t) {
+void chessboard::Play(int t){
     static int setTime = -1;
-    if (t != setTime) {
+    if (t != setTime){
         setTime = t;
     }
     else return;
@@ -102,11 +83,7 @@ void chessboard::Play(int t) {
     makeZombie(t);
     vector<object*> list;
     list = Map.getListAll();
-    Forr(k, 0, list.size()) if (list[k]->getId() / 10 == 2) list[k]->run(t);
-    list = Map.getListAll();
-    Forr(k, 0, list.size()) if (list[k]->getId() / 10 == 1) list[k]->run(t);
-    list = Map.getListAll();
-    Forr(k, 0, list.size()) if (list[k]->getId() / 10 == 0) list[k]->run(t);
+    Forr(k, 0, list.size()) list[k]->run(t);
 }
 
 void chessboard::makeZombie(int t)
@@ -119,7 +96,7 @@ void chessboard::makeZombie(int t)
         pzCreator b;
         int id = randint(20, mxZomId);//noraml zombie
         int x = randint(1, h);
-        Map.push(b.createObject(id, Map, Shop, location(x, l), t));
+        Map.push(b.createObject(id, Map, Shop, location(x,l), t));
         setTime = t;
         interval = randint(6, 10);
     }
@@ -138,13 +115,13 @@ void chessboard::makeSun(int t)
     }
 }
 
-void chessboard::MoveCircle(string st) {
+void chessboard::MoveCircle(string st){
     mapPoint.Move(st);
 }
 
-void chessboard::setInit() {
+void chessboard::setInit(){
     mapPoint.setInit();
 }
-void chessboard::setDead() {
+void chessboard::setDead(){
     mapPoint.setDead();
 }
