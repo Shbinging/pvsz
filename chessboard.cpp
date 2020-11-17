@@ -63,6 +63,11 @@ void chessboard::display(){
                         if (list[k].p->getId() / 10 == 2) Screen.print(list[k].p->getName());
                         s1++;
                     }
+                    Forr(k, 0, list.size()) {
+                        if (s1 > 5) break;
+                        if (list[k].p->getId() / 10 == 0) Screen.print(list[k].p->getName());
+                        s1++;
+                    }
                     Screen.print("\t"); 
             }
             Screen.print("|");
