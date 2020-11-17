@@ -25,7 +25,7 @@ class zombieBasic: public zombieNormal{
         zombieBasic(location a, int t, MAP* m, shop* n):zombieNormal(a, t, *m, *n){
             attack = 5;
             heart = 10;
-            speed = 3;
+            speed = 20;
             attackSpeed = 3;
             id = 21;
             score = 5;

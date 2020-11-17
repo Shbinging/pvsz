@@ -4,8 +4,8 @@
 #include <Windows.h>
 #include "diag.h"
 
-const int width = 200;
-const int height = 200;
+const int width = 100;
+const int height = 30;
 class screen {
 private:
 	bool switchOver = false;

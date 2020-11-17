@@ -22,13 +22,13 @@ void game::play(){
             status = 3;
             break;
         }//lose
-        if (t > 100) {
+        if (t > 1000) {
             status = 2;
             break;
         }//win
         s++;
-        Sleep(50); //printf("%d\n", s);
-
+        //Sleep(50); //printf("%d\n", s);
+        //display();
         if (s % 10 == 0) {
             t++;
         }
