@@ -2,7 +2,7 @@
 #include"chessboard.h"
 #include"shop.h"
 #include"diag.h"
-
+#include"screen.h"
 game::game():
     Shop(mon),
     chess(h,l,Shop)
@@ -39,11 +39,12 @@ void game::play(){
 }
 
 void game::display(){
-    system("cls");
-    printf("PlantVSZombie V%.1f\n\n", v);
+    Screen.cls();
+    Screen.print("PlantVSZombie V0.3\n\n");
     chess.display();
     Shop.display();
-    cout << getStatus()<<endl;
+    Screen.print(getStatus());
+    Screen.Draw();
 }
 
 string game::getStatus(){

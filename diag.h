@@ -21,4 +21,5 @@
 using namespace std;
 #define Forr(i, l, r) for(int i = l; i < r; i++)
 #define For(i, l, r) for(int i = l; i <= r; i++)
+#define Down(i, r, l) for(int i = r; i >= l; i--)
 #endif

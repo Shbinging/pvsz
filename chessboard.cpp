@@ -41,21 +41,23 @@ bool chessboard::isLose(){
 void chessboard::display(){
     printLine('-');
     For(i, 1, h){
-        printf("|");
+        Screen.print("|");
         For(j, 1, l){
             vector<node> list = Map.getList(i, j);
             string st;
             if (!mapPoint.isDead() && mapPoint.getLocation().x == i && mapPoint.getLocation().y == j){
-                cout << mapPoint.getName() <<"\t";
+                Screen.print(mapPoint.getName());
+                Screen.print("\t");
             }
             else 
-                if (!list.size()) printf("\t");
+                if (!list.size()) Screen.print("\t");
             else {
-                cout << list[0].p->getName()<<"\t";
+                    Screen.print(list[0].p->getName());
+                    Screen.print("\t"); 
             }
-            printf("|");
+            Screen.print("|");
         } 
-        printf("\n");
+        Screen.print("\n");
         printLine('-');
     }
     printLine();

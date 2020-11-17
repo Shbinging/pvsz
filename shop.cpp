@@ -6,23 +6,27 @@
 #include"diag.h"
 
 void shop::display(){
-    printf("[Shop]\t\t\t\t\tSunSum:%d, Score:%d\n", getMoney(), getScore());
+    Screen.print("[Shop]\t\t\t\t\tSunSum:" + to_string(getMoney()) + ", Score:" + to_string(getScore()) + "\n");
     printLine('-');
-    printf("|");
+    Screen.print("|");
     For(i, 1, Sum)
-        cout << list[i]->getName() << "\t"<<"|";
-    printf("\n");
-    printf("|");
+        Screen.print(list[i]->getName() + "\t" + "|");
+
+    Screen.print("\n");
+    Screen.print("|");
     For(i, 1, Sum)
-        cout << list[i]->getMoney() <<"\t" <<"|";
-    printf("\n");
+        Screen.print(to_string(list[i]->getMoney()) + "\t" + "|");
+    Screen.print("\n");
     printLine('-');
-    printf("|");
+    Screen.print("|");
     For(i, 1, getSum()){
-        if (!shopPoint.isDead() && i == shopPoint.getLocation().y) cout <<shopPoint.getName()<<"\t" <<"|";
-        else cout <<"\t"<<"|";
+        if (!shopPoint.isDead() && i == shopPoint.getLocation().y) Screen.print(shopPoint.getName()+"\t" +"|");
+        else {
+            Screen.print("\t");
+            Screen.print("|");
+        }
     }
-    cout <<endl;
+    Screen.print("\n");
     printLine();
 }
 

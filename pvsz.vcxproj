@@ -106,6 +106,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="plant.cpp" />
     <ClCompile Include="pzCreator.cpp" />
+    <ClCompile Include="screen.cpp" />
     <ClCompile Include="shop.cpp" />
     <ClCompile Include="ui.cpp" />
     <ClCompile Include="zombie.cpp" />
@@ -123,6 +124,7 @@
     <ClInclude Include="plant.h" />
     <ClInclude Include="pzCreator.h" />
     <ClInclude Include="rand.h" />
+    <ClInclude Include="screen.h" />
     <ClInclude Include="shop.h" />
     <ClInclude Include="ui.h" />
     <ClInclude Include="view.h" />
