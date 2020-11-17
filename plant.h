@@ -118,7 +118,20 @@ public:
         attack = 5;
         speed = 2;
         name = "Ÿ¡";
-        id = 12;
+        id = 16;
+    }
+    void run(int t);
+};
+
+class plantCherrish :public plantNormal {
+public:
+    plantCherrish(location a, int t, MAP* m, shop* n) :plantNormal(a, t, *m, *n) {
+        money = 150;
+        heart = 30;
+        attack = 5;
+        speed = 2;
+        name = "”£";
+        id = 17;
     }
     void run(int t);
 };

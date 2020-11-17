@@ -2,6 +2,7 @@
 #include"plant.h"
 #include"map.h"
 #include"shop.h"
+#include"config.h"
 #define Forr(i, l, r) for(int i = l; i < r; i++)
 using namespace std;
 
@@ -89,9 +90,23 @@ void plantWogua::run(int t)
 {
     vector<node> f = Map.getlList(x, y);
     Forr(i, 0, f.size()) {
-        if (f[i].p->getType() == 3) {
+        if (f[i].p->getId() /10 == 2) {
             f[i].p->setDead();
             setDead();
         }
     }
+}
+
+void plantCherrish::run(int t)
+{
+        For(i, max(1, x - 1), min(h, x + 1))
+            For(j, max(1, y - 1), min(l, y + 1)) {
+            vector<node> f = Map.getlList(i, j);
+            Forr(l, 0, f.size()) {
+                if (f[l].p->getId() / 10 == 2) {
+                    f[l].p->setDead();
+                }
+            }
+        }
+        setDead();
 }
