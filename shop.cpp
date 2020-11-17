@@ -67,6 +67,11 @@ bool shop::checkEn() {
     return canBuy();
 }
 
+<<<<<<< Updated upstream
 int shop::getBuyId() {
     return 9 + shopPoint.getLocation().y;
+=======
+int shop::getBuyId(){
+    return 9+shopPoint.getLocation().y;
+>>>>>>> Stashed changes
 }

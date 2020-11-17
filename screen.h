@@ -14,7 +14,7 @@ private:
 	COORD coord = { 0,0 };
 	//Ë«»º³å´¦ÀíÏÔÊ¾
 	DWORD bytes = 0;
-	char data[height*2][width*2];
+	char data[height*2][width*2], data1[height*2][width*2];
 
 public:
 	void Draw();

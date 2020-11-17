@@ -46,6 +46,7 @@ public:
 
 };
 
+<<<<<<< Updated upstream
 class shopCircle :public circle {
 protected:
 
@@ -68,6 +69,30 @@ public:
         l = ll;
     }
     void Move(string st);
+=======
+class shopCircle:public circle{
+    protected:
+        
+        shop& Shop;
+    public:
+        void changeStatus();
+        void setInit() {
+            setLive();
+            x = ih;
+            y = il - 1;
+            Move("right");
+        }
+        int getId(){ return y;}
+        shopCircle(int hh, int ll, int iih, int iil, shop* Shopp):circle(hh, ll), Shop(*Shopp){
+            ih = iih;
+            il = iil;
+        }
+        void setHL(int hh, int ll) {
+            h = hh;
+            l = ll;
+        }
+        void Move(string st);
+>>>>>>> Stashed changes
 };
 
 

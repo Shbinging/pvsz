@@ -20,6 +20,7 @@ public:
     void Attack(int t);
     virtual void Move() {}
 };
+<<<<<<< Updated upstream
 class zombieBasic : public zombieNormal {
 public:
     zombieBasic(location a, int t, MAP* m, shop* n) :zombieNormal(a, t, *m, *n) {
@@ -31,6 +32,19 @@ public:
         score = 5;
         name = "½©";
     }
+=======
+class zombieBasic: public zombieNormal{
+    public:
+        zombieBasic(location a, int t, MAP* m, shop* n):zombieNormal(a, t, *m, *n){
+            attack = 5;
+            heart = 10;
+            speed = 3;
+            attackSpeed = 3;
+            id = 21;
+            score = 5;
+            name = "½©";
+        }
+>>>>>>> Stashed changes
     void setDead() {
         live = 0;
         Shop.addScore(score);

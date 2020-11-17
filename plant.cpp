@@ -15,8 +15,13 @@ void plantNormal::beAttack() {
     }
 }
 
+<<<<<<< Updated upstream
 bullet* plantWandou::getBullet(int t) {
     bullet* p = new bullet(location(x, y), t, attack, Map);
+=======
+bullet* plantWandou::getBullet(int t){
+    bullet * p = new bullet(location(x, y), t, attack, Map);
+>>>>>>> Stashed changes
     return p;
 }
 
@@ -26,8 +31,13 @@ bool plantWandou::isGetBullet(int t) {
     else return 0;
 }
 
+<<<<<<< Updated upstream
 void plantWandou::run(int t) {
     if (!isDead() && isGetBullet(t)) {
+=======
+void plantWandou::run(int t){
+    if (!isDead() && isGetBullet(t)){ 
+>>>>>>> Stashed changes
         Map.push(x, y, getBullet(t));
     }
 }

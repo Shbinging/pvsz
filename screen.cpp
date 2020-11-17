@@ -2,7 +2,7 @@
 #include"diag.h"
 void screen::Draw()
 {
-
+	
 	Forr(i, 0, height) {
 		Forr(j, 0, width) {
 			if (data[i][j] == '\t') {
@@ -12,7 +12,11 @@ void screen::Draw()
 			}
 		}
 	}
+<<<<<<< Updated upstream
 
+=======
+	
+>>>>>>> Stashed changes
 	/*
 	int jj = 0;
 	Forr(i, 0, height) {

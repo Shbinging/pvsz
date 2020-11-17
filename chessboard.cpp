@@ -51,7 +51,11 @@ void chessboard::display() {
             }
             else
                 if (!list.size()) Screen.print("\t");
+<<<<<<< Updated upstream
                 else {
+=======
+            else {
+>>>>>>> Stashed changes
                     int s1 = 0;
                     Forr(k, 0, list.size()) {
                         if (s1 > 5) break;
@@ -63,8 +67,13 @@ void chessboard::display() {
                         if (list[k].p->getId() / 10 == 2) Screen.print(list[k].p->getName());
                         s1++;
                     }
+<<<<<<< Updated upstream
                     Screen.print("\t");
                 }
+=======
+                    Screen.print("\t"); 
+            }
+>>>>>>> Stashed changes
             Screen.print("|");
         }
         Screen.print("\n");

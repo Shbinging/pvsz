@@ -16,6 +16,7 @@ void game::play(){
     display();
     bool f1;
     while(1){
+<<<<<<< Updated upstream
         chess.Play(t);
         makePlant();
         if (chess.isLose()) {
@@ -23,17 +24,30 @@ void game::play(){
             break;
         }//lose
         if (t > 100000) {
+=======
+        if (t > 100000000){
+>>>>>>> Stashed changes
             status = 2;
             break;
         }//win
         s++;
+<<<<<<< Updated upstream
         //Sleep(50); //printf("%d\n", s);
 
+=======
+        //Sleep(20)
+        f1 = makePlant();
+>>>>>>> Stashed changes
         if (s % 10 == 0) {
             t++;
         }
         else continue;
-        display();
+        if (s % 10 == 0) chess.Play(t);
+        if (!f1) display();
+        if (chess.isLose()) {
+            status = 3;
+            break;
+        }
     }
     display();
     while(1);
