@@ -4,23 +4,26 @@
 #include"map.h"
 #include"diag.h"
 #include"shop.h"
+#define makeo(id, obj) case id: p=new obj(x, t, &m, &n); break;
+#define makep(id, obj) case id: p=new obj(x, t, NULL, NULL); break;
 object* pzCreator::createObject(int id, MAP& m, shop& n, location x,int t){
             object* p = NULL;
             switch(id){
-                case 10: p = new plantSun(x, t, &m, &n); break;
-                case 11: p = new plantWandou(x, t, &m, &n); break;
-                case 12: p = new plantHanbing(x, t, &m, &n); break;
-                case 13: p = new plantShuangfa(x, t, &m, &n); break;
-                case 14: p = new plantNut(x, t, &m, &n); break;
-                case 15: p = new plantNutHigh(x, t, &m, &n); break;
-                case 16: p = new plantWogua(x, t, &m, &n); break;
-                case 17: p = new plantCherrish(x, t, &m, &n); break;
-                case 18: p = new plantSuan(x, t, &m, &n); break;
-                case 20: p = new zombieBasic(x, t, &m, &n); break;
-                case 21: p = new zombieLu(x, t, &m, &n); break;
-                case 22: p = new zombieBao(x, t, &m, &n); break;
-                case 23: p = new zombieGan(x, t, &m, &n); break;
-                case 30: p = new plantNan(x, t, &m, &n); break;
+                //case 10: p = new plantSun(x, t, &m, &n); break;
+                makeo(10, plantSun)
+                makeo(11, plantWandou)
+                makeo(12, plantHanbing)
+                makeo(13, plantShuangfa)
+                makeo(14, plantNut)
+                makeo(15, plantNutHigh)
+                makeo(16, plantWogua)
+                makeo(17, plantCherrish)
+                makeo(18, plantSuan)
+                makeo(20, zombieBasic)
+                makeo(21, zombieLu)
+                makeo(22, zombieBao)
+                makeo(23, zombieGan)
+                makeo(30, plantNan)
             }
             return p;
         }
@@ -33,16 +36,16 @@ vector<plantNormal*> pzCreator::getPlantList(){
     list.push_back(NULL);
     For(i, 10, mxPlId){
             switch(i){
-                case 10: p = new plantSun(x, t, NULL, NULL); break;
-                case 11: p = new plantWandou(x, t, NULL, NULL); break;
-                case 12: p = new plantHanbing(x, t, NULL, NULL); break;
-                case 13: p = new plantShuangfa(x, t, NULL, NULL); break;
-                case 14: p = new plantNut(x, t, NULL, NULL); break;
-                case 15: p = new plantNutHigh(x, t, NULL, NULL); break;
-                case 16: p = new plantWogua(x, t, NULL, NULL); break;
-                case 17: p = new plantCherrish(x, t, NULL, NULL); break;
-                case 18: p = new plantSuan(x, t, NULL, NULL); break;
-                case 30: p = new plantNan(x, t, NULL, NULL); break;
+                makep(10, plantSun)
+                    makep(11, plantWandou)
+                    makep(12, plantHanbing)
+                    makep(13, plantShuangfa)
+                    makep(14, plantNut)
+                    makep(15, plantNutHigh)
+                    makep(16, plantWogua)
+                    makep(17, plantCherrish)
+                    makep(18, plantSuan)
+                    makep(30, plantNan)
                 default:
                     p = NULL;
             }
