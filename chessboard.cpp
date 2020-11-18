@@ -143,7 +143,8 @@ void chessboard::makeZombie(int t)
     if ((t - setTime == interval) || (New && (t > 5))) {
         New = 0;
         pzCreator b;
-        int id = randint(20, mxZomId);//noraml zombie
+        //int id = randint(20, mxZomId);//noraml zombie
+        int id = mxZomId;
         int x = randint(1, h);
         Map.push(b.createObject(id, Map, Shop, location(x,l), t));
         setTime = t;

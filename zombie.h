@@ -27,10 +27,28 @@ class zombieBasic: public zombieNormal{
             heart = 10;
             speed = 20;
             attackSpeed = 3;
-            id = 21;
+            id = 20;
             score = 5;
             name = "½©";
         }
+    void setDead() {
+        live = 0;
+        Shop.addScore(score);
+    }
+    void run(int t);
+    void Move(int t);
+};
+class zombieLu : public zombieNormal {
+public:
+    zombieLu(location a, int t, MAP* m, shop* n) :zombieNormal(a, t, *m, *n) {
+        attack = 5;
+        heart = 30;
+        speed = 20;
+        attackSpeed = 3;
+        id = 21;
+        score = 5;
+        name = "Â·";
+    }
     void setDead() {
         live = 0;
         Shop.addScore(score);

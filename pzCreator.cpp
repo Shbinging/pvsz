@@ -17,6 +17,7 @@ object* pzCreator::createObject(int id, MAP& m, shop& n, location x,int t){
                 case 17: p = new plantCherrish(x, t, &m, &n); break;
                 case 18: p = new plantSuan(x, t, &m, &n); break;
                 case 20: p = new zombieBasic(x, t, &m, &n); break;
+                case 21: p = new zombieLu(x, t, &m, &n); break;
                 case 30: p = new plantNan(x, t, &m, &n); break;
             }
             return p;

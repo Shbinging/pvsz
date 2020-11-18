@@ -33,3 +33,18 @@ void zombieBasic::Move(int t){
     Forr(i, 0, g.size()) if (g[i].p->getId()/10 == 1) return;
     if ((t-setTime)%speed == 0 && t -setTime > 0) y -= 1; 
 }
+
+void zombieLu::run(int t)
+{
+    Attack(t);
+    Move(t);
+}
+
+void zombieLu::Move(int t)
+{
+    //vector<node> f = Map.getList(x, y - 1);
+    vector<node> g = Map.getList(x, y);
+    //g.insert(g.end(), f.begin(), f.end());
+    Forr(i, 0, g.size()) if (g[i].p->getId() / 10 == 1) return;
+    if ((t - setTime) % speed == 0 && t - setTime > 0) y -= 1;
+}
