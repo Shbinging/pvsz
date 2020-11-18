@@ -68,5 +68,7 @@ bool shop::checkEn(){
 }
 
 int shop::getBuyId(){
-    return 9+shopPoint.getLocation().y;
+    static pzCreator b;
+    static vector<plantNormal*> a = b.getPlantList();
+    return a[shopPoint.getLocation().y]->getId();
 }

@@ -12,7 +12,7 @@ class plantNormal: public object{
         int money;
         MAP& Map;
         shop& Shop;
-
+        bool two;
     public:
         plantNormal(location a, int t,MAP& m,shop& s):
         object(a, t),
@@ -20,9 +20,11 @@ class plantNormal: public object{
         Shop(s)
         {
             type = 2;
+            two = 0;
         }
         int getMoney(){return money;}
         void beAttack();
+        bool canDouble() { return two; }
 };
 
 class plantWandou:public plantNormal{
@@ -134,4 +136,31 @@ public:
         id = 17;
     }
     void run(int t);
+};
+
+class plantSuan :public plantNormal {
+public:
+    plantSuan(location a, int t, MAP* m, shop* n) :plantNormal(a, t, *m, *n) {
+        money = 200;
+        heart = 30;
+        attack = 5;
+        speed = 2;
+        name = "Ëâ";
+        id = 18;
+    }
+    void run(int t);
+};
+
+class plantNan :public plantNormal {
+public:
+    plantNan(location a, int t, MAP* m, shop* n) :plantNormal(a, t, *m, *n) {
+        money = 200;
+        heart = 200;
+        attack = 5;
+        speed = 2;
+        name = "ÄÏ";
+        id = 30;
+        two = 1;
+    }
+    void run();
 };

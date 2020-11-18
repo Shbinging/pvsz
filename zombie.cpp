@@ -7,10 +7,16 @@ void zombieNormal::Attack(int t){
     //vector<node> f = Map.getList(x, y - 1);
     vector<node> g = Map.getList(x, y);
     //g.insert(g.end(), f.begin(), f.end());
+    Forr(i, 0, g.size()) {
+        if (g[i].p->getId() / 10 == 3) {
+            g[i].p->subHeart(attack);
+            return;
+        }
+    }
     Forr(i, 0, g.size()){
         if (g[i].p->getId() / 10 == 1){
             g[i].p->subHeart(attack);
-            break;
+            return;
         }
     }  
 }

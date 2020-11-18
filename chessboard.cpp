@@ -55,18 +55,31 @@ void chessboard::display(){
                     int s1 = 0;
                     Forr(k, 0, list.size()) {
                         if (s1 > 5) break;
-                        if (list[k].p->getId() / 10 == 1) Screen.print(list[k].p->getName());
-                        s1++;
+                        if (list[k].p->getId() / 10 == 1) {
+                            Screen.print(list[k].p->getName());
+                            s1++;
+                        }
                     }
                     Forr(k, 0, list.size()) {
                         if (s1 > 5) break;
-                        if (list[k].p->getId() / 10 == 2) Screen.print(list[k].p->getName());
-                        s1++;
+                        if (list[k].p->getId() / 10 == 2) {
+                            Screen.print(list[k].p->getName());
+                            s1++;
+                        }
                     }
                     Forr(k, 0, list.size()) {
                         if (s1 > 5) break;
-                        if (list[k].p->getId() / 10 == 0) Screen.print(list[k].p->getName());
-                        s1++;
+                        if (list[k].p->getId() / 10 == 0) {
+                            Screen.print(list[k].p->getName());
+                            s1++;
+                        }
+                    }
+                    Forr(k, 0, list.size()) {
+                        if (s1 > 5) break;
+                        if (list[k].p->getId() / 10 == 3) {
+                            Screen.print(list[k].p->getName());
+                            s1++;
+                        }
                     }
                     Screen.print("\t"); 
             }
@@ -85,7 +98,22 @@ void chessboard::makePlant(int id, int t) {
 }
 
 bool chessboard::checkEn(){
-    return mapPoint.checkEn();
+    location loc = mapPoint.getLocation();
+    bool canPlant = 1;
+    if (id / 10 == 1) {
+        vector<node> f = Map.getList(loc.x, loc.y);
+        Forr(i, 0, f.size()) {
+            if (f[i].p->getId() / 10 == 1) canPlant = 0;
+        }
+
+    }
+    else if (id / 10 == 3) {
+        vector<node> f = Map.getList(loc.x, loc.y);
+        Forr(i, 0, f.size()) {
+            if (f[i].p->getId() == id) canPlant = 0;
+        }
+    }
+    return canPlant;
 }
 
 void chessboard::Play(int t){
@@ -101,6 +129,8 @@ void chessboard::Play(int t){
     Forr(k, 0, list.size()) if (!list[k]->isDead() && list[k]->getId() / 10 == 2) list[k]->run(t);
     list = Map.getListAll();
     Forr(k, 0, list.size()) if (!list[k]->isDead() && list[k]->getId() / 10 == 1) list[k]->run(t);
+    list = Map.getListAll();
+    Forr(k, 0, list.size()) if (!list[k]->isDead() && list[k]->getId() / 10 == 3) list[k]->run(t);
     list = Map.getListAll();
     Forr(k, 0, list.size()) if (!list[k]->isDead() && list[k]->getId() / 10 == 0) list[k]->run(t);
 }
@@ -134,12 +164,18 @@ void chessboard::makeSun(int t)
     }
 }
 
-void chessboard::MoveCircle(string st){
+void chessboard::MoveCircle(string st, int id){
+    this->id = id;
+    static pzCreator b;
+    static vector<plantNormal*> a = b.getPlantList();
     mapPoint.Move(st);
+    mapPoint.changeStatus(checkEn());
 }
 
-void chessboard::setInit(){
+void chessboard::setInit(int id){
+    this->id = id;
     mapPoint.setInit();
+    mapPoint.changeStatus(checkEn());
 }
 void chessboard::setDead(){
     mapPoint.setDead();

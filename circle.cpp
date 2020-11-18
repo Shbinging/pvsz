@@ -2,7 +2,7 @@
 #include"shop.h"
 #include"map.h"
 
-void mapCircle::Move(string st){
+void mapCircle::Move(string st, bool ex){
     if (st == "up"){
         if (canGo(x -1, y)) x-=1;
     }
@@ -15,15 +15,9 @@ void mapCircle::Move(string st){
     if (st == "right"){
         if (canGo(x, y+1)) y+=1;
     } 
-    changeStatus();
 }
-void mapCircle::changeStatus(){
-    vector<node> f = Map.getList(x, y);
-    bool ok = 1;
-    Forr(i, 0, f.size()){
-        if (f[i].p->getType() <=2) ok = 0;
-    }
-    if (ok) {name = "put";en = 1;}
+void mapCircle::changeStatus(bool ex){
+    if (ex) {name = "put";en = 1;}
     else {name ="forbid";en = 0;}
 }
 

@@ -30,7 +30,7 @@ class circle :public object {
 class mapCircle:public circle{
     protected:
         MAP& Map;
-        void changeStatus();
+        
     public:
         void setInit() {
             setLive();
@@ -42,7 +42,8 @@ class mapCircle:public circle{
             ih = iih;
             il = iil;
         }
-        void Move(string st);
+        void Move(string st, bool ex = 0);
+        void changeStatus(bool ex = 0);
 
 };
 

@@ -77,7 +77,7 @@ bool game::makePlant() {
             //printf("ok\n");
             if (Shop.checkEn()) {
                 state = 2;
-                chess.setInit();
+                chess.setInit(Shop.getBuyId());
             }
         }
         else if (state == 2) {
@@ -101,10 +101,10 @@ bool game::makePlant() {
     }
     if (state == 2) {
         switch (ch) {
-        case 75: chess.MoveCircle("left"); break;
-        case 77: chess.MoveCircle("right"); break;
-        case 72: chess.MoveCircle("up"); break;
-        case 80: chess.MoveCircle("down");break;
+        case 75: chess.MoveCircle("left", Shop.getBuyId()); break;
+        case 77: chess.MoveCircle("right", Shop.getBuyId()); break;
+        case 72: chess.MoveCircle("up", Shop.getBuyId()); break;
+        case 80: chess.MoveCircle("down", Shop.getBuyId());break;
         }
     }
     ch = 0;

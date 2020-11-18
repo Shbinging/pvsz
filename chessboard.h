@@ -11,6 +11,7 @@ class shop;
 class chessboard:public view {
 private:
     int t;
+    int id;
     int h, l;
     MAP Map;
     shop& Shop;
@@ -24,8 +25,8 @@ public:
     void Play(int t);
     void display();
     void makePlant(int id, int t);
-    void MoveCircle(string st);
+    void MoveCircle(string st, int id = 0);
     bool checkEn();
-    void setInit();
+    void setInit(int id);
     void setDead();
 };

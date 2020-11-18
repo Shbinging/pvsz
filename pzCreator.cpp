@@ -15,7 +15,9 @@ object* pzCreator::createObject(int id, MAP& m, shop& n, location x,int t){
                 case 15: p = new plantNutHigh(x, t, &m, &n); break;
                 case 16: p = new plantWogua(x, t, &m, &n); break;
                 case 17: p = new plantCherrish(x, t, &m, &n); break;
+                case 18: p = new plantSuan(x, t, &m, &n); break;
                 case 20: p = new zombieBasic(x, t, &m, &n); break;
+                case 30: p = new plantNan(x, t, &m, &n); break;
             }
             return p;
         }
@@ -36,8 +38,12 @@ vector<plantNormal*> pzCreator::getPlantList(){
                 case 15: p = new plantNutHigh(x, t, NULL, NULL); break;
                 case 16: p = new plantWogua(x, t, NULL, NULL); break;
                 case 17: p = new plantCherrish(x, t, NULL, NULL); break;
+                case 18: p = new plantSuan(x, t, NULL, NULL); break;
+                case 30: p = new plantNan(x, t, NULL, NULL); break;
+                default:
+                    p = NULL;
             }
-            list.push_back(p);
+            if (p) list.push_back(p);
     }
     return list;
 }

@@ -110,3 +110,23 @@ void plantCherrish::run(int t)
         }
         setDead();
 }
+
+void plantSuan::run(int t)
+{
+    vector<node> f = Map.getlList(x, y);
+    Forr(i, 0, f.size()) {
+        if (f[i].p->getId() / 10 == 2) {
+            int h = f[i].p->getLocation().x, l = f[i].p->getLocation().y;
+            if (h - 1 < 1) h++;
+            else h--;
+            f[i].p->setLocation(location(h, l));
+            setDead();
+            break;
+        }
+    }
+}
+
+void plantNan::run()
+{
+
+}
