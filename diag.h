@@ -19,6 +19,10 @@
 #include<iostream>
 #pragma comment(lib, "winmm.lib")
 using namespace std;
+#define RED 0
+#define GREEN 1
+#define ORG 2
+#define WHITE 3
 #define Forr(i, l, r) for(int i = l; i < r; i++)
 #define For(i, l, r) for(int i = l; i <= r; i++)
 #define Down(i, r, l) for(int i = r; i >= l; i--)

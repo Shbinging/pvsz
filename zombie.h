@@ -24,7 +24,7 @@ class zombieBasic: public zombieNormal{
     public:
         zombieBasic(location a, int t, MAP* m, shop* n):zombieNormal(a, t, *m, *n){
             attack = 5;
-            heart = 10;
+            mxheart = heart = 10;
             speed = 20;
             attackSpeed = 3;
             id = 20;
@@ -42,12 +42,33 @@ class zombieLu : public zombieNormal {
 public:
     zombieLu(location a, int t, MAP* m, shop* n) :zombieNormal(a, t, *m, *n) {
         attack = 5;
-        heart = 30;
+        mxheart = heart = 30;
         speed = 20;
         attackSpeed = 3;
         id = 21;
         score = 5;
         name = "Â·";
+    }
+    void setDead() {
+        live = 0;
+        Shop.addScore(score);
+    }
+    void run(int t);
+    void Move(int t);
+};
+class zombieBao : public zombieNormal {
+private:
+    bool f;
+public:
+    zombieBao(location a, int t, MAP* m, shop* n) :zombieNormal(a, t, *m, *n) {
+        attack = 5;
+        mxheart = heart = 30;
+        speed = 20;
+        attackSpeed = 3;
+        id = 21;
+        f = 1;
+        score = 5;
+        name = "±¨";
     }
     void setDead() {
         live = 0;

@@ -1,6 +1,7 @@
 #ifndef OBJECT
 #define OBJECT
 #include "diag.h"
+
 using namespace std;
 struct location{
     int x, y;
@@ -18,15 +19,17 @@ class object{
         int x, y;
         int setTime;
         bool live;
-        int heart;
+        int heart, mxheart;
         int attack;
         int speed;
+        int color;
     public:
         virtual void run(int t){}
         object(location a, int t){
             setLocation(a);
             setTime = t;
             setLive();
+            color = WHITE;
         }
         int getId(){return id;}
         location getLocation(){
