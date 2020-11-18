@@ -96,3 +96,27 @@ void zombieGan::Move(int t)
         else if (!hasplant) y -= 1;
     }
 }
+
+void zombieXiao::run(int t)
+{
+    if (l - y == s1) {
+        bomb();
+    }
+    Attack(t);
+    Move(t);
+}
+
+void zombieXiao::bomb()
+{
+    For(i, max(1, x - 1), min(h, x + 1))
+        For(j, max(1, y - 1), min(l, y + 1)) {
+        vector<node> f = Map.getlList(i, j);
+        Forr(l, 0, f.size()) {
+            if (isPlant(f[l].p->getId())) {
+                f[l].p->setDead();
+            }
+        }
+    }
+    setDead();
+}
+

@@ -23,6 +23,8 @@ using namespace std;
 #define GREEN 1
 #define ORG 2
 #define WHITE 3
+#define isPlant(x) ((x/10 == 1) || (x / 10 == 3))
+#define isZombie(x) ((x/10 == 2))
 #define Forr(i, l, r) for(int i = l; i < r; i++)
 #define For(i, l, r) for(int i = l; i <= r; i++)
 #define Down(i, r, l) for(int i = r; i >= l; i--)

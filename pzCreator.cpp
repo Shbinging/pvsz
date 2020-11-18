@@ -23,6 +23,7 @@ object* pzCreator::createObject(int id, MAP& m, shop& n, location x,int t){
                 makeo(21, zombieLu)
                 makeo(22, zombieBao)
                 makeo(23, zombieGan)
+                makeo(24, zombieXiao)
                 makeo(30, plantNan)
             }
             return p;

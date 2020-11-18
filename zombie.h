@@ -2,6 +2,8 @@
 #define zombie_
 #include"object.h"
 #include"shop.h"
+#include"rand.h"
+#include"config.h"
 class MAP;
 class zombieNormal: public object{
     protected:
@@ -99,5 +101,27 @@ public:
     }
     //void run(int t);
     void Move(int t);
+};
+class zombieXiao : public zombieNormal {
+private:
+    int s1;
+public:
+    zombieXiao(location a, int t, MAP* m, shop* n) :zombieNormal(a, t, *m, *n) {
+        attack = 5;
+        mxheart = heart = 30;
+        speed = 20;
+        attackSpeed = 3;
+        id = 21;
+        score = 5;
+        name = "С";
+        s1 = randint(1, l * 2);
+    }
+    void setDead() {
+        live = 0;
+        Shop.addScore(score);
+    }
+    void run(int t);
+    void bomb();
+    //void Move(int t);
 };
 #endif
