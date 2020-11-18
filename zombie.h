@@ -77,4 +77,26 @@ public:
     void run(int t);
     void Move(int t);
 };
+
+class zombieGan : public zombieNormal {
+private:
+    bool f;
+public:
+    zombieGan(location a, int t, MAP* m, shop* n) :zombieNormal(a, t, *m, *n) {
+        attack = 5;
+        mxheart = heart = 30;
+        speed = 20;
+        attackSpeed = 3;
+        id = 21;
+        f = 1;
+        score = 5;
+        name = "³Å";
+    }
+    void setDead() {
+        live = 0;
+        Shop.addScore(score);
+    }
+    void run(int t);
+    void Move(int t);
+};
 #endif

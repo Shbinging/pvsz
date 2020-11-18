@@ -64,3 +64,23 @@ void zombieBao::Move(int t)
     Forr(i, 0, g.size()) if (g[i].p->getId() / 10 == 1) return;
     if ((t - setTime) % speed == 0 && t - setTime > 0) y -= 1;
 }
+
+void zombieGan::run(int t)
+{
+    Attack(t);
+    Move(t);
+}
+
+void zombieGan::Move(int t)
+{
+    vector<node> g = Map.getList(x, y);
+    bool hasplant = 0, hasGao = 0;
+    Forr(i, 0, g.size()) if (g[i].p->getId() / 10 == 1) { hasplant = 1; if (g[i].p->getId() == 15) hasGao = 1; }
+    if ((t - setTime) % speed == 0 && t - setTime > 0) {
+        if (hasplant && f && !hasGao) {
+            y -= 1;
+            f = 0;
+        }
+        else if (!hasplant) y -= 1;
+    }
+}
