@@ -20,7 +20,19 @@ void zombieNormal::Attack(int t){
         }
     }  
 }
+void zombieNormal::run(int t)
+{
+    Attack(t);
+    Move(t);
+}
 
+void zombieNormal::Move(int t)
+{
+    vector<node> g = Map.getList(x, y);
+    Forr(i, 0, g.size()) if (g[i].p->getId() / 10 == 1) return;
+    if ((t - setTime) % speed == 0 && t - setTime > 0) y -= 1;
+}
+/*
 void zombieBasic::run(int t){
     Attack(t);
     Move(t);
@@ -48,14 +60,14 @@ void zombieLu::Move(int t)
     Forr(i, 0, g.size()) if (g[i].p->getId() / 10 == 1) return;
     if ((t - setTime) % speed == 0 && t - setTime > 0) y -= 1;
 }
-
+*/
 void zombieBao::run(int t)
 {
     if (heart < mxheart / 3 && f) { speed /= 3; f = 0; }
     Attack(t);
     Move(t);
 }
-
+/*
 void zombieBao::Move(int t)
 {
     //vector<node> f = Map.getList(x, y - 1);
@@ -70,7 +82,7 @@ void zombieGan::run(int t)
     Attack(t);
     Move(t);
 }
-
+*/
 void zombieGan::Move(int t)
 {
     vector<node> g = Map.getList(x, y);

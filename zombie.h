@@ -17,8 +17,9 @@ class zombieNormal: public object{
         {
             type = 3;
         }
-        void Attack(int t);
-        virtual void Move(){}
+        virtual void Attack(int t);
+        virtual void Move(int t);
+        virtual void run(int t);
 };
 class zombieBasic: public zombieNormal{
     public:
@@ -35,8 +36,8 @@ class zombieBasic: public zombieNormal{
         live = 0;
         Shop.addScore(score);
     }
-    void run(int t);
-    void Move(int t);
+    //void run(int t);
+    //void Move(int t);
 };
 class zombieLu : public zombieNormal {
 public:
@@ -53,8 +54,8 @@ public:
         live = 0;
         Shop.addScore(score);
     }
-    void run(int t);
-    void Move(int t);
+    //void run(int t);
+    //void Move(int t);
 };
 class zombieBao : public zombieNormal {
 private:
@@ -75,7 +76,7 @@ public:
         Shop.addScore(score);
     }
     void run(int t);
-    void Move(int t);
+    //void Move(int t);
 };
 
 class zombieGan : public zombieNormal {
@@ -96,7 +97,7 @@ public:
         live = 0;
         Shop.addScore(score);
     }
-    void run(int t);
+    //void run(int t);
     void Move(int t);
 };
 #endif
