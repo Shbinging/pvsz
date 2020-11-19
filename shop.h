@@ -3,6 +3,7 @@
 #include "diag.h"
 #include "view.h"
 #include"circle.h"
+
 using namespace std;
 
 class pzCreator;
@@ -12,6 +13,8 @@ class shopCircle;
 class shop:public view{
     private:
         shopCircle shopPoint;
+        int coldTime[100];
+
     public:
         shop(int t);
         int getSum(){return Sum;}
@@ -30,6 +33,7 @@ class shop:public view{
         void setDead();
         void display();
         bool checkEn();
+        void update(int t);
     private:
         int money;
         vector<plantNormal*> list;

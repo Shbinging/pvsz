@@ -16,7 +16,6 @@ void game::play(){
     display();
     bool f1;
     while(1){
-        chess.Play(t);
         makePlant();
         if (chess.isLose()) {
             status = 3;
@@ -31,6 +30,8 @@ void game::play(){
         //display();
         if (s % 10 == 0) {
             t++;
+            chess.Play(t);
+            Shop.update(t);
         }
         else continue;
         display();

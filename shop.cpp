@@ -18,6 +18,13 @@ void shop::display(){
         Screen.print(to_string(list[i]->getMoney()) + "\t" + "|");
     Screen.print("\n");
     printLine('-');
+
+    Screen.print("|");
+    For(i, 1, getSum()) {
+        Screen.print(to_string(coldTime[i]) + "\t" + "|");
+    }
+    Screen.print("\n");
+    printLine('-');
     Screen.print("|");
     For(i, 1, getSum()){
         if (!shopPoint.isDead() && i == shopPoint.getLocation().y) Screen.print(shopPoint.getName()+"\t" +"|");
@@ -33,13 +40,14 @@ void shop::display(){
 bool shop::canBuy(){
     int t = shopPoint.getLocation().y;
     if (t > Sum || t < 1) return 0;
-        if (list[t]->getMoney() > money) return 0;
+        if (list[t]->getMoney() > money || coldTime[t] > 0) return 0;
         else return 1;
 }
 
 void shop::Buy(){
     int t = shopPoint.getLocation().y;
     money -= list[t]->getMoney();
+    coldTime[t] = list[t]->getColdTime();
 }
 
 shop::shop(int t):shopPoint(1,2,1,1, this){//!!!
@@ -49,6 +57,7 @@ shop::shop(int t):shopPoint(1,2,1,1, this){//!!!
     list = tmp.getPlantList();
     Sum = list.size() - 1;
     shopPoint.setHL(1, Sum);
+    For(i, 1, Sum) coldTime[i] = 0;
 }
 
 void shop::setDead(){
@@ -65,6 +74,12 @@ void shop::MoveCircle(string st){
 
 bool shop::checkEn(){
     return canBuy();
+}
+
+void shop::update(int t)
+{
+    if (t == 0 || t % 5) return;
+    For(i, 1, Sum) coldTime[i] = max(0, coldTime[i] - 1);
 }
 
 int shop::getBuyId(){

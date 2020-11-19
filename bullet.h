@@ -41,7 +41,7 @@ public:
     bulletBall(location a, int tt, int att, MAP& m) :bullet(a, tt, att, m) {
         name = "@";
         id = 2;
-        attack = 5;
+        attack = 30;
         vector<object*> f = Map.getListAll();
         vector<int> g;
         Forr(i, 0, f.size())

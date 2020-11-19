@@ -13,6 +13,7 @@ class plantNormal: public object{
         MAP& Map;
         shop& Shop;
         bool two;
+        int coldTime;
     public:
         plantNormal(location a, int t,MAP& m,shop& s):
         object(a, t),
@@ -25,6 +26,7 @@ class plantNormal: public object{
         int getMoney(){return money;}
         void beAttack();
         bool canDouble() { return two; }
+        int getColdTime() { return coldTime; }
 };
 
 class plantWandou:public plantNormal{
@@ -36,6 +38,7 @@ class plantWandou:public plantNormal{
             speed = 2;
             name = "Íã";
             id = 11;
+            coldTime = 10;
         }
         bullet* getBullet(int t);
         bool isGetBullet(int t);
@@ -52,6 +55,7 @@ public:
         type = 1;
         name = "Ì«";
         id = 10;
+        coldTime = 10;
     }
     int getSun(int t);
     bool isGetSun(int t);
@@ -67,6 +71,7 @@ public:
         speed = 2;
         name = "º®";
         id = 12;
+        coldTime = 10;
     }
     bullet* getBullet(int t);
     bool isGetBullet(int t);
@@ -81,6 +86,7 @@ public:
         speed = 2;
         name = "Ë«";
         id = 13;
+        coldTime = 10;
     }
     bullet* getBullet(int t);
     bool isGetBullet(int t);
@@ -96,6 +102,7 @@ public:
         speed = 2;
         name = "¼á";
         id = 14;
+        coldTime = 10;
     }
     void run(int t){}
 };
@@ -109,6 +116,7 @@ public:
         speed = 2;
         name = "¸ß";
         id = 15;
+        coldTime = 10;
     }
     void run(int t) {}
 };
@@ -121,6 +129,7 @@ public:
         speed = 2;
         name = "ÙÁ";
         id = 16;
+        coldTime = 10;
     }
     void run(int t);
 };
@@ -134,6 +143,7 @@ public:
         speed = 2;
         name = "Ó£";
         id = 17;
+        coldTime = 10;
     }
     void run(int t);
 };
@@ -147,6 +157,7 @@ public:
         speed = 2;
         name = "Ëâ";
         id = 18;
+        coldTime = 10;
     }
     void run(int t);
 };
@@ -161,6 +172,7 @@ public:
         name = "ÄÏ";
         id = 30;
         two = 1;
+        coldTime = 10;
     }
     void run();
 };
