@@ -4,6 +4,7 @@
 #include"shop.h"
 #include"rand.h"
 #include"config.h"
+#include"bullet.h"
 class MAP;
 class zombieNormal: public object{
     protected:
@@ -28,8 +29,8 @@ class zombieBasic: public zombieNormal{
         zombieBasic(location a, int t, MAP* m, shop* n):zombieNormal(a, t, *m, *n){
             attack = 5;
             mxheart = heart = 10;
-            speed = 20;
-            attackSpeed = 3;
+            speed = 40;
+            attackSpeed = 20;
             id = 20;
             score = 5;
             name = "½©";
@@ -68,7 +69,7 @@ public:
         mxheart = heart = 30;
         speed = 20;
         attackSpeed = 3;
-        id = 21;
+        id = 22;
         f = 1;
         score = 5;
         name = "±¨";
@@ -90,7 +91,7 @@ public:
         mxheart = heart = 30;
         speed = 20;
         attackSpeed = 3;
-        id = 21;
+        id = 23;
         f = 1;
         score = 5;
         name = "³Å";
@@ -111,7 +112,7 @@ public:
         mxheart = heart = 30;
         speed = 20;
         attackSpeed = 3;
-        id = 21;
+        id = 24;
         score = 5;
         name = "Ð¡";
         s1 = randint(1, l * 2);
@@ -123,5 +124,29 @@ public:
     void run(int t);
     void bomb();
     //void Move(int t);
+};
+class zombieTou : public zombieNormal {
+private:
+    int s1, s, stage, ballS;
+public:
+    zombieTou(location a, int t, MAP* m, shop* n) :zombieNormal(a, t, *m, *n) {
+        s = 0;
+        stage = 0;
+        attack = 30;
+        mxheart = heart = 30;
+        speed = 40;
+        attackSpeed = 10;
+        id = 25;
+        score = 5;
+        name = "Í¶";
+        ballS = 5;
+        s1 = randint(1, l * 2);
+    }
+    void setDead() {
+        live = 0;
+        Shop.addScore(score);
+    }
+    void Attack(int t);
+    void run(int t);
 };
 #endif

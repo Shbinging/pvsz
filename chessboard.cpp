@@ -132,7 +132,8 @@ void chessboard::Play(int t){
     list = Map.getListAll();
     Forr(k, 0, list.size()) if (!list[k]->isDead() && list[k]->getId() / 10 == 3) list[k]->run(t);
     list = Map.getListAll();
-    Forr(k, 0, list.size()) if (!list[k]->isDead() && list[k]->getId() / 10 == 0) list[k]->run(t);
+    Forr(k, 0, list.size()) if (!list[k]->isDead() && list[k]->getId() / 10 == 0)
+        list[k]->run(t);
 }
 
 void chessboard::makeZombie(int t)
@@ -140,7 +141,9 @@ void chessboard::makeZombie(int t)
     static bool New = 1;
     static int setTime = 0;
     static int interval = 0;
+    static int s1 = 0;
     if ((t - setTime == interval) || (New && (t > 5))) {
+        if (s1) return;
         New = 0;
         pzCreator b;
         //int id = randint(20, mxZomId);//noraml zombie
@@ -149,6 +152,7 @@ void chessboard::makeZombie(int t)
         Map.push(b.createObject(id, Map, Shop, location(x,l), t));
         setTime = t;
         interval = randint(6, 10);
+        s1++;
     }
 }
 

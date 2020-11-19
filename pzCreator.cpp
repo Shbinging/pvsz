@@ -4,6 +4,7 @@
 #include"map.h"
 #include"diag.h"
 #include"shop.h"
+#include"bullet.h"
 #define makeo(id, obj) case id: p=new obj(x, t, &m, &n); break;
 #define makep(id, obj) case id: p=new obj(x, t, NULL, NULL); break;
 object* pzCreator::createObject(int id, MAP& m, shop& n, location x,int t){
@@ -24,6 +25,7 @@ object* pzCreator::createObject(int id, MAP& m, shop& n, location x,int t){
                 makeo(22, zombieBao)
                 makeo(23, zombieGan)
                 makeo(24, zombieXiao)
+                makeo(25, zombieTou)
                 makeo(30, plantNan)
             }
             return p;

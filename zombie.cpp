@@ -30,7 +30,9 @@ void zombieNormal::Move(int t)
 {
     vector<node> g = Map.getList(x, y);
     Forr(i, 0, g.size()) if (g[i].p->getId() / 10 == 1) return;
-    if ((t - setTime) % speed == 0 && t - setTime > 0) y -= 1;
+    if ((t - setTime) % speed == 0 && t - setTime > 0) {
+        y -= 1; if (y < 0) setDead();
+    }
 }
 /*
 void zombieBasic::run(int t){
@@ -120,3 +122,30 @@ void zombieXiao::bomb()
     setDead();
 }
 
+void zombieTou::Attack(int t) {
+    vector<node> f = Map.getList(x, y);
+    Forr(l, 0, f.size()) {
+        if (isPlant(f[l].p->getId())) {
+            f[l].p->setDead();
+        }
+    }
+}
+
+void zombieTou::run(int t)
+{
+    bulletBall *p = new bulletBall(location(x, y), t, attack, Map);
+    int x1 = p->getX();
+    if (x1 == -1 || s >= ballS) {
+        name = "³µ";
+        Move(t);
+        Attack(t);
+    }
+    else{
+        name = "Í¶";
+        if ((t - setTime) % attackSpeed == 0 && t - setTime > 0) {
+            s++;
+            bullet* p = new bulletBall(location(x, y), t, attack, Map);
+            Map.push(x, y, p);
+        }
+    }
+}
