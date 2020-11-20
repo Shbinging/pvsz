@@ -140,9 +140,9 @@ void chessboard::makeZombie(int t)
 {
     static bool New = 1;
     static int setTime = 0;
-    static int interval = 0;
+    static int interval = 5;
     static int s1 = 0;
-    if ((t - setTime == interval) || (New && (t > 5))) {
+    if (t % 20 == 0 || (New && (t > 5))) {
         //if (s1) return;
         New = 0;
         pzCreator b;

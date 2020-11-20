@@ -28,7 +28,7 @@ void game::play(){
         s++;
         //Sleep(50); //printf("%d\n", s);
         //display();
-        if (s % 1000 == 0) {
+        if (s % 2000 == 0) {
             t++;
             chess.Play(t);
             Shop.update(t);
@@ -42,10 +42,13 @@ void game::play(){
 
 void game::display(){
     Screen.cls();
-    Screen.print("PlantVSZombie V0.3\n\n");
+    Screen.print("Plant", GREEN);
+    Screen.print(" VS ", RED);
+    Screen.print("Zombie", BROWN);
+    Screen.print(" V0.3\n\n");
     chess.display();
     Shop.display();
-    Screen.print(getStatus()+"\n");
+    Screen.print(getStatus()+"\n" + to_string(t));
     Screen.Draw();
 
 }
