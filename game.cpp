@@ -28,7 +28,7 @@ void game::play(){
         s++;
         //Sleep(50); //printf("%d\n", s);
         //display();
-        if (s % 10 == 0) {
+        if (s % 1000 == 0) {
             t++;
             chess.Play(t);
             Shop.update(t);
@@ -37,7 +37,7 @@ void game::play(){
         display();
     }
     display();
-    while(1);
+    while(1) display();
 }
 
 void game::display(){
@@ -45,7 +45,7 @@ void game::display(){
     Screen.print("PlantVSZombie V0.3\n\n");
     chess.display();
     Shop.display();
-    Screen.print(getStatus());
+    Screen.print(getStatus()+"\n");
     Screen.Draw();
 
 }
@@ -53,8 +53,8 @@ void game::display(){
 string game::getStatus(){
     if (status == 0) return "pause";
     if (status == 1) return "playing";
-    if (status == 2) return "win!";
-    if (status == 3) return "lose!";
+    if (status == 2) return "win";
+    if (status == 3) return "lose";
 }
 
 bool game::makePlant() {

@@ -63,7 +63,7 @@ void chessboard::display(){
                     Forr(k, 0, list.size()) {
                         if (s1 > 5) break;
                         if (list[k].p->getId() / 10 == 2) {
-                            Screen.print(list[k].p->getName());
+                            Screen.print(list[k].p->getName(), RED);
                             s1++;
                         }
                     }

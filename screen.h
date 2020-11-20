@@ -3,9 +3,8 @@
 #include "stdlib.h"
 #include <Windows.h>
 #include "diag.h"
+#include"config.h"
 
-const int width = 100;
-const int height = 30;
 class screen {
 private:
 	bool switchOver = false;
@@ -14,14 +13,15 @@ private:
 	COORD coord = { 0,0 };
 	//À´ª∫≥Â¥¶¿Ìœ‘ æ
 	DWORD bytes = 0;
-	char data[height*2][width*2], data1[height*2][width*2];
-
+	WORD data[height * width * 2];
+	char data2[height * width], data1[height*width];;
+	int s = 0;
 public:
 	void Draw();
 	screen();
 	void cls();
-	void print(string st);
-	void right(char a[], int x, int p);
+	void print(string st, SHORT coll = WHITE);
+	void right(WORD a[], int x, int p);
 };
 
 extern screen Screen;
