@@ -65,7 +65,7 @@ void zombieLu::Move(int t)
 */
 void zombieBao::run(int t)
 {
-    if (heart < mxheart / 3 && f) { speed /= 3; f = 0; }
+    if (heart < mxheart / 3 && f) { color = RED; speed /= 3; f = 0; }
     Attack(t);
     Move(t);
 }
@@ -94,8 +94,9 @@ void zombieGan::Move(int t)
         if (hasplant && f && !hasGao) {
             y -= 1;
             f = 0;
+            color = RED;
         }
-        else if (!hasplant) y -= 1;
+        else if (!hasplant) { y -= 1; color = BROWN; }
     }
 }
 
@@ -103,6 +104,9 @@ void zombieXiao::run(int t)
 {
     if (l - y == s1) {
         bomb();
+    }
+    else if (l - y == s1 - 1) {
+        color = RED;
     }
     Attack(t);
     Move(t);
@@ -138,10 +142,11 @@ void zombieTou::run(int t)
     if (x1 == -1 || s >= ballS) {
         name = "³µ";
         Move(t);
-        Attack(t);
+        Attack(t);   
     }
     else{
         name = "Í¶";
+        color = RED;
         if ((t - setTime) % attackSpeed == 0 && t - setTime > 0) {
             s++;
             bullet* p = new bulletBall(location(x, y), t, attack, Map);

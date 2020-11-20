@@ -22,18 +22,20 @@ class plantNormal: public object{
         {
             type = 2;
             two = 0;
+            color = GREEN;
         }
         int getMoney(){return money;}
         void beAttack();
         bool canDouble() { return two; }
         int getColdTime() { return coldTime; }
+        void setColor();
 };
 
 class plantWandou:public plantNormal{
     public:
         plantWandou(location a, int t, MAP* m, shop* n):plantNormal(a, t, *m, *n){
             money = 100;
-            heart = 30;
+            mxheart = heart = 30;
             attack = 5;
             speed = 2;
             name = "Íã";
@@ -49,7 +51,7 @@ class plantSun :public plantNormal {
 public:
     plantSun(location a, int t, MAP* m, shop* n) :plantNormal(a, t, *m, *n) {
         money = 25;
-        heart = 50;
+        mxheart = heart = 50;
         attack = 50;//sun
         speed = 3;
         type = 1;
@@ -66,7 +68,7 @@ class plantHanbing :public plantNormal {
 public:
     plantHanbing(location a, int t, MAP* m, shop* n) :plantNormal(a, t, *m, *n) {
         money = 150;
-        heart = 30;
+        mxheart = heart = 30;
         attack = 5;
         speed = 2;
         name = "º®";
@@ -81,7 +83,7 @@ class plantShuangfa :public plantNormal {
 public:
     plantShuangfa(location a, int t, MAP* m, shop* n) :plantNormal(a, t, *m, *n) {
         money = 150;
-        heart = 30;
+        mxheart = heart = 30;
         attack = 5;
         speed = 2;
         name = "Ë«";
@@ -97,7 +99,7 @@ class plantNut :public plantNormal {
 public:
     plantNut(location a, int t, MAP* m, shop* n) :plantNormal(a, t, *m, *n) {
         money = 50;
-        heart = 100;
+        mxheart = heart = 100;
         attack = 0;
         speed = 2;
         name = "¼á";
@@ -111,7 +113,7 @@ class plantNutHigh :public plantNormal {
 public:
     plantNutHigh(location a, int t, MAP* m, shop* n) :plantNormal(a, t, *m, *n) {
         money = 100;
-        heart = 200;
+        mxheart = heart = 200;
         attack = 0;
         speed = 2;
         name = "¸ß";
@@ -124,7 +126,7 @@ class plantWogua :public plantNormal {
 public:
     plantWogua(location a, int t, MAP* m, shop* n) :plantNormal(a, t, *m, *n) {
         money = 150;
-        heart = 30;
+        mxheart = heart = 30;
         attack = 5;
         speed = 2;
         name = "ÙÁ";
@@ -138,12 +140,13 @@ class plantCherrish :public plantNormal {
 public:
     plantCherrish(location a, int t, MAP* m, shop* n) :plantNormal(a, t, *m, *n) {
         money = 150;
-        heart = 30;
+        mxheart = heart = 30;
         attack = 5;
         speed = 2;
         name = "Ó£";
         id = 17;
         coldTime = 10;
+        color = RED;
     }
     void run(int t);
 };
@@ -152,7 +155,7 @@ class plantSuan :public plantNormal {
 public:
     plantSuan(location a, int t, MAP* m, shop* n) :plantNormal(a, t, *m, *n) {
         money = 200;
-        heart = 30;
+        mxheart = heart = 30;
         attack = 5;
         speed = 2;
         name = "Ëâ";
@@ -166,7 +169,7 @@ class plantNan :public plantNormal {
 public:
     plantNan(location a, int t, MAP* m, shop* n) :plantNormal(a, t, *m, *n) {
         money = 200;
-        heart = 200;
+        mxheart = heart = 200;
         attack = 5;
         speed = 2;
         name = "ÄÏ";

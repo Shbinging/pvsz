@@ -19,6 +19,7 @@ class zombieNormal: public object{
         Map(m)
         {
             type = 3;
+            color = BROWN;
         }
         virtual void Attack(int t);
         virtual void Move(int t);
@@ -115,7 +116,7 @@ public:
         id = 24;
         score = 5;
         name = "С";
-        s1 = randint(1, l * 2);
+        s1 = randint(1, l);
     }
     void setDead() {
         live = 0;

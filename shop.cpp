@@ -14,20 +14,26 @@ void shop::display(){
 
     Screen.print("\n");
     Screen.print("|");
-    For(i, 1, Sum)
-        Screen.print(to_string(list[i]->getMoney()) + "\t" + "|");
+    For(i, 1, Sum) {
+        Screen.print(to_string(list[i]->getMoney()) + "\t", YELLOW);
+        Screen.print("|");
+    }
     Screen.print("\n");
     printLine('-');
 
     Screen.print("|");
     For(i, 1, getSum()) {
-        Screen.print(to_string(coldTime[i]) + "\t" + "|");
+        Screen.print(to_string(coldTime[i]) + "\t", RED);
+        Screen.print("|");
     }
     Screen.print("\n");
     printLine('-');
     Screen.print("|");
     For(i, 1, getSum()){
-        if (!shopPoint.isDead() && i == shopPoint.getLocation().y) Screen.print(shopPoint.getName()+"\t" +"|");
+        if (!shopPoint.isDead() && i == shopPoint.getLocation().y) { 
+            Screen.print(shopPoint.getName(), shopPoint.getColor());
+            Screen.print("\t|");
+        }
         else {
             Screen.print("\t");
             Screen.print("|");

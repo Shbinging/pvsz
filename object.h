@@ -22,9 +22,10 @@ class object{
         int heart, mxheart;
         int attack;
         int speed;
-        int color;
+        short color;
     public:
         virtual void run(int t){}
+        virtual void setColor(){}
         object(location a, int t){
             setLocation(a);
             setTime = t;
@@ -35,6 +36,7 @@ class object{
         location getLocation(){
             return location(x, y);
         }
+        short getColor() { return color; }
         void setLocation(location a){
             x = a.x;
             y = a.y;
@@ -57,6 +59,7 @@ class object{
         void subHeart(int x){
             heart -= x;
             if (heart <= 0) setDead();
+            setColor();
         }
         int getHeart() { return heart; }
         string getName(){return name;}

@@ -17,8 +17,8 @@ void mapCircle::Move(string st, bool ex){
     } 
 }
 void mapCircle::changeStatus(bool ex){
-    if (ex) {name = "put";en = 1;}
-    else {name ="forbid";en = 0;}
+    if (ex) { color = GREEN; name = "put"; en = 1; }
+    else { color = RED; name = "forbid"; en = 0; }
 }
 
 void shopCircle::Move(string st){
@@ -38,7 +38,7 @@ void shopCircle::Move(string st){
  }
 
  void shopCircle::changeStatus(){
-    if (Shop.canBuy()) {en = 1;name = "Buy";}
-    else {en = 0;name = "can't";}
+     if (Shop.canBuy()) { color = YELLOW; en = 1; name = "Buy"; }
+     else { color = RED; en = 0; name = "can't"; }
 }
 

@@ -25,6 +25,8 @@ using namespace std;
 #define YELLOW 0x06
 #define WHITE 0x07
 #define BLACK 0x00
+#define BROWN (RED|YELLOW)
+#define BLUE 0x01
 #define isPlant(x) ((x/10 == 1) || (x / 10 == 3))
 #define isZombie(x) ((x/10 == 2))
 #define Forr(i, l, r) for(int i = l; i < r; i++)

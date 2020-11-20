@@ -15,6 +15,7 @@ class bullet:public object{
         speed = 1;
         type = 4;
         id = 0;
+        color = GREEN;
     } 
     virtual void Attack();
     virtual void run(int t);
@@ -30,6 +31,7 @@ public:
         name = "*";
         id = 1;
         attack = 5;
+        color = BLUE;
     }
     void Attack();
 };
@@ -42,6 +44,7 @@ public:
         name = "@";
         id = 2;
         attack = 2;
+        color = BROWN;
         vector<object*> f = Map.getListAll();
         vector<int> g;
         Forr(i, 0, f.size())

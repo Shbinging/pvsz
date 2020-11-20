@@ -16,6 +16,13 @@ void plantNormal::beAttack(){
     }   
 }
 
+void plantNormal::setColor()
+{
+    if (heart <= mxheart / 3) color = RED;
+    else if (heart <= mxheart / 3 * 2) color = YELLOW;
+    else color = GREEN;
+}
+
 bullet* plantWandou::getBullet(int t){
     bullet * p = new bullet(location(x, y), t, attack, Map);
     return p;
@@ -121,7 +128,6 @@ void plantSuan::run(int t)
             else h--;
             f[i].p->setLocation(location(h, l));
             setDead();
-            break;
         }
     }
 }

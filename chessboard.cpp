@@ -46,7 +46,7 @@ void chessboard::display(){
             vector<node> list = Map.getList(i, j);
             string st;
             if (!mapPoint.isDead() && mapPoint.getLocation().x == i && mapPoint.getLocation().y == j){
-                Screen.print(mapPoint.getName());
+                Screen.print(mapPoint.getName(), mapPoint.getColor());
                 Screen.print("\t");
             }
             else 
@@ -56,28 +56,28 @@ void chessboard::display(){
                     Forr(k, 0, list.size()) {
                         if (s1 > 5) break;
                         if (list[k].p->getId() / 10 == 1) {
-                            Screen.print(list[k].p->getName());
+                            Screen.print(list[k].p->getName(), list[k].p->getColor());
                             s1++;
                         }
                     }
                     Forr(k, 0, list.size()) {
                         if (s1 > 5) break;
                         if (list[k].p->getId() / 10 == 2) {
-                            Screen.print(list[k].p->getName(), RED);
+                            Screen.print(list[k].p->getName(), list[k].p->getColor());
                             s1++;
                         }
                     }
                     Forr(k, 0, list.size()) {
                         if (s1 > 5) break;
                         if (list[k].p->getId() / 10 == 0) {
-                            Screen.print(list[k].p->getName());
+                            Screen.print(list[k].p->getName(), list[k].p->getColor());
                             s1++;
                         }
                     }
                     Forr(k, 0, list.size()) {
                         if (s1 > 5) break;
                         if (list[k].p->getId() / 10 == 3) {
-                            Screen.print(list[k].p->getName());
+                            Screen.print(list[k].p->getName(), list[k].p->getColor());
                             s1++;
                         }
                     }
