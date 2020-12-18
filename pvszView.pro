@@ -10,10 +10,19 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    object.cpp \
+    plant.cpp \
+    timerUse.cpp \
+    zombie.cpp
 
 HEADERS += \
-    mainwindow.h
+    config.h \
+    mainwindow.h \
+    object.h \
+    plant.h \
+    timerUse.h \
+    zombie.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -22,3 +31,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     picture.qrc
+
+DISTFILES += \
+    gitUse.txt
