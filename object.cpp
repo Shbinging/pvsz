@@ -36,7 +36,6 @@ void object::setHeart(int x){
 }
 void object::subHeart(int x){
     heart -= x;
-    if (heart <= 0) setDead();
 }
 int object::getHeart() { return heart; }
 QString object::getName(){return name;}
@@ -48,11 +47,11 @@ void object::setType(int x)
 }
 
 bool object::isDead(){
-    return !live;
+    return heart <= 0 || (!live);
 }
 void object::setDead(){
     live = 0;
-    setVisible(0);
+    scene()->removeItem(this);
 }
 void object::setLive(){
     live = 1;
@@ -65,6 +64,7 @@ void object::setMovie(QString path)
 {
     if (oripath1 == path) return;
     oripath1 = path;
+    qDebug()<<"change";
     if (!movie){
         delete movie;
     }

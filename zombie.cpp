@@ -8,6 +8,14 @@ void zombieBasic::advance(int phase)
 {
     if (!phase){
         update();
+        if (isDead()){
+            setMovie(getSourcePath("ZombieDie","gif"));
+            setHead(getSourcePath("ZombieHead","gif"));
+            if (head->frameCount() - 1 == head->currentFrameNumber()){
+                setDead();
+            }
+            return;
+        }
         Attack(t);
         Move(t);
     }
@@ -18,7 +26,7 @@ void zombieBasic::Attack(int t)
     QList<QGraphicsItem*> g = collidingItems();
     Forr(i, 0, g.size()) {
         object* tmp =qgraphicsitem_cast<object*> (g[i]);
-        if (isProtecter(tmp->getId())) {
+        if (isProtecter(tmp->getId()) && !tmp->isDead()) {
             setMovie(getSourcePath("ZombieAttack", "gif"));
             movie->setSpeed(1000/attackSpeed);
             if ((t-setTime)%attackSpeed) return;
@@ -28,7 +36,7 @@ void zombieBasic::Attack(int t)
     }
     Forr(i, 0, g.size()){
         object* tmp =qgraphicsitem_cast<object*> (g[i]);
-        if (isPlant(tmp->getId())) {
+        if (isPlant(tmp->getId()) && !tmp->isDead()) {
             setMovie(getSourcePath("ZombieAttack", "gif"));
             movie->setSpeed(1000/attackSpeed);
             if ((t-setTime)%attackSpeed) return;

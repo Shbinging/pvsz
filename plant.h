@@ -30,14 +30,14 @@ class plantWandou:public plantNormal{
             money = 100;
             mxheart = heart = 30;
             attack = 5;
-            speed = 2;
+            speed = 20;
             name = "豌";
             id = 11;
             coldTime = 10;
-
-
+            qDebug()<<"ok";
         }
         void advance(int phrase) override;
+        bool isGetBullet(int t);
 };
 
 #endif // PLANT_H
