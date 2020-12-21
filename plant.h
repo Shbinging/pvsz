@@ -62,14 +62,78 @@ class plantSun :public plantNormal {
 public:
     plantSun(location a, int t) :plantNormal(a, t) {
         money = 25;
-        mxheart = heart = 500;
+        mxheart = heart = 20;
         attack = 50;//sun
-        speed = 30;
+        speed = 300;
         name = "̫";
         id = 10;
         coldTime = 10;
     }
     bool isGetSun(int t);
     void advance(int phase);
+};
+
+class plantHanbing :public plantNormal {
+public:
+    plantHanbing(location a, int t) :plantNormal(a, t) {
+        money = 150;
+        mxheart = heart = 70;
+        attack = 5;
+        speed = 20;
+        name = "";
+        id = 12;
+        coldTime = 200;
+    }
+    void advance(int phase) override;
+    bool isGetBullet(int t);
+};
+
+class plantShuangfa :public plantNormal {
+public:
+    plantShuangfa(location a, int t) :plantNormal(a, t) {
+        money = 150;
+        mxheart = heart = 70;
+        attack = 5;
+        speed = 20;
+        name = "";
+        id = 13;
+        coldTime = 200;
+    }
+    void advance(int phrase) override;
+    bool isGetBullet(int t);
+};
+
+class plantNut :public plantNormal {
+public:
+    plantNut(location a, int t) :plantNormal(a, t) {
+        money = 50;
+        mxheart = heart = 100;
+        attack = 0;
+        speed = 2;
+        name = "";
+        id = 14;
+        coldTime = 50;
+    }
+    void advance(int phase);
+};
+
+class plantWogua :public plantNormal {
+protected:
+    bool isBomb;
+public:
+    plantWogua(location a, int t) :plantNormal(a, t) {
+        money = 150;
+        mxheart = heart = 50;
+        attack = 5;
+        speed = 40;
+        name = "";
+        id = 16;
+        isBomb = 0;
+        coldTime = 100;
+    }
+    void advance(int phase);
+    bool isGrown(int t);
+    bool collidesWithItem(const QGraphicsItem *other, Qt::ItemSelectionMode mode) const override;
+    void setbomb();
 };
 #endif // PLANT_H

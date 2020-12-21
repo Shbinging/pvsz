@@ -1,6 +1,7 @@
 #include "bullet.h"
 #include"config.h"
 #include"timerUse.h"
+#include"zombie.h"
 #include<QPainter>
 #include<QDebug>
 QRectF bulletNormal::boundingRect() const
@@ -81,4 +82,18 @@ void car::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidg
 {
     if (image)
         painter->drawPixmap(QRect(-30, -30, 60, 60), *image);
+}
+
+void bulletBing::Attack()
+{
+    QList<QGraphicsItem*> g = collidingItems();
+    Forr(i, 0, g.size()) {
+        zombieNormal* tmp =qgraphicsitem_cast<zombieNormal*> (g[i]);
+        if (isZombie(tmp->getId()) && !tmp->isDead()) {
+            tmp->subHeart(attack);
+            tmp->setCold(coldTime);
+            setDead();
+            return;
+        }
+    }
 }

@@ -5,6 +5,7 @@
 #include"bullet.h"
 #include<QRandomGenerator>
 #include"shop.h"
+#include"zombie.h"
 int plantNormal::getMoney()
 {
     return money;
@@ -76,14 +77,14 @@ QRectF plantNormal::boundingRect() const
 
 sun::sun(location a, int t):plantNormal(a, t)
 {
-    destY = QRandomGenerator::global()->bounded(50, windowHeight - 50);
+    destY = QRandomGenerator::global()->bounded(300, windowHeight - 50);
     destX = a.x;
     canMove = 0;
     speed = 1;
     sunX = 40;
     sunY = 20;
     id = 31;
-    attack = 500;
+    attack = 50;
 }
 
 void sun::advance(int phase)
@@ -114,7 +115,15 @@ void sun::calc()
 void sun::move(int t)
 {
     if (getLocation().x == sunLocationX && getLocation().y == sunLocationY){
-        shop *s = qgraphicsitem_cast<shop *>(scene()->items(QPointF(shopLocationX, shopLocationY))[0]);
+        QList<QGraphicsItem*> g = scene()->items(QPointF(shopLocationX, shopLocationY));
+        //qDebug()<< g.size();
+        shop *s;
+        Forr(i, 0, g.size()){
+            object* tmp =qgraphicsitem_cast<object*>(g[i]);
+            if (tmp->getId() == 41){
+                s = qgraphicsitem_cast<shop*>(g[i]);
+            }
+        }
         s->addMoney(attack);
         setDead();
         return;
@@ -174,4 +183,135 @@ void plantSun::advance(int phase)
             scene()->addItem(tmp);
         }
     }
+}
+
+void plantHanbing::advance(int phase)
+{
+    update();
+    if (!phase){
+        if (isDead()){
+            setDead();
+            return;
+        }
+        setMovie(getSourcePath("SnowPea","gif"));
+
+        if (isGetBullet(t)){
+            bulletBing* tmp = new bulletBing(location(x() + 30, y()), t);
+            scene()->addItem(tmp);
+        }
+    }
+}
+
+bool plantHanbing::isGetBullet(int t)
+{
+    bool hasZombie = 0;
+    QList<QGraphicsItem*> item = collidingItems();
+    Forr(i, 0, item.size()){
+        object* tmp = qgraphicsitem_cast<object*>(item[i]);
+        if (isZombie(tmp->getId()) && !tmp->isDead()){
+            hasZombie = 1;
+        }
+    }
+    if ((t - setTime) % speed == 0 && hasZombie)
+         return 1;
+     else return 0;
+}
+
+void plantShuangfa::advance(int phrase)
+{
+    update();
+    if (!phrase){
+        if (isDead()){
+            setDead();
+            return;
+        }
+        setMovie(getSourcePath("Repeater","gif"));
+
+        if (isGetBullet(t)){
+            bullet* tmp = new bullet(location(x() + 30, y()), t);
+            bullet* tmp1 = new bullet(location(x() + 40, y()), t);
+            scene()->addItem(tmp);
+            scene()->addItem(tmp1);
+        }
+    }
+}
+
+bool plantShuangfa::isGetBullet(int t)
+{
+    bool hasZombie = 0;
+    QList<QGraphicsItem*> item = collidingItems();
+    Forr(i, 0, item.size()){
+        object* tmp = qgraphicsitem_cast<object*>(item[i]);
+        if (isZombie(tmp->getId()) && !tmp->isDead()){
+            hasZombie = 1;
+        }
+    }
+    if ((t - setTime) % speed == 0 && hasZombie)
+         return 1;
+     else return 0;
+}
+
+void plantNut::advance(int phase)
+{
+    update();
+    if (!phase){
+        if (isDead()){
+            setDead();
+            return;
+        }
+        if (heart >= 2.0/3 * mxheart) setMovie(getSourcePath("WallNut","gif"));
+        else if (heart >= 1.0/3 * mxheart) setMovie(getSourcePath("WallNut1", "gif"));
+        else setMovie(getSourcePath("WallNut2", "gif"));
+    }
+}
+
+void plantWogua::advance(int phase)
+{
+    update();
+    if (!phase){
+        if (isBomb){
+            setMovie(getSourcePath("PotatoMineBomb","gif"));
+            if (movie->frameCount() - 1 == movie->currentFrameNumber()){
+                setDead();
+            }
+            return;
+        }
+        if (isDead()){
+            setDead();
+            return;
+        }
+        if (!isGrown(t)){
+            setMovie(getSourcePath("PotatoMine1","gif"));
+        }
+        else{
+            setMovie(getSourcePath("PotatoMine","gif"));
+            QList<QGraphicsItem*> g = collidingItems();
+            bool f = 0;
+            Forr(i, 0, g.size()) {
+                object* tmp =qgraphicsitem_cast<object*> (g[i]);
+                if (isZombie(tmp->getId()) && !tmp->isDead()) {
+                    zombieNormal* tmp1 = qgraphicsitem_cast<zombieNormal*> (tmp);
+                    tmp1->setHeart(-1);
+                    tmp1->setBomb();
+                    f = 1;
+                }
+            }
+            if (f) setbomb();
+        }
+    }
+}
+
+bool plantWogua::isGrown(int t)
+{
+    return t - setTime > speed;
+}
+
+bool plantWogua::collidesWithItem(const QGraphicsItem *other, Qt::ItemSelectionMode mode) const
+{
+    return qFuzzyCompare(other->y(), y()) && qAbs(other->x() - x()) < 30;
+}
+
+void plantWogua::setbomb()
+{
+    isBomb = 1;
 }

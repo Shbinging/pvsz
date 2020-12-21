@@ -10,6 +10,10 @@ object *pzCreator::createObject(int id, location x, int t)
         //case 10: p = new plantSun(x, t, &m, &n); break;
         makeo(10, plantSun)
         makeo(11, plantWandou)
+        makeo(12, plantHanbing)
+        makeo(13, plantShuangfa)
+        makeo(14, plantNut)
+        makeo(16, plantWogua)
         makeo(20, zombieBasic)
         makeo(31, sun)
     }

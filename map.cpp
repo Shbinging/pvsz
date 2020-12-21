@@ -8,7 +8,7 @@
 #include<stdio.h>
 #include"shovel.h"
 #include<QList>
-QList<int> l ={10, 11};
+QList<int> l ={10, 11, 12, 13, 14, 16};
 Map::Map(location a, int t):object(a,t)
 {
     can = 1;

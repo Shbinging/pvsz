@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
     scene->setSceneRect(150, 0, windowWidth, windowHeight);
     scene->setItemIndexMethod(QGraphicsScene::NoIndex);
     zombieBasic* a = new zombieBasic(location(windowWidth - 50, 130 + 98), 0);
-    zombieBasic* a1 = new zombieBasic(location(windowWidth, 130 + 98), 0);
+    zombieBasic* a1 = new zombieBasic(location(windowWidth + 100, 130 + 98), 0);
     car* b = new car(location(windowWidth -100, 130+98), 0);
     sun* c = new sun(location(windowWidth -400, 0),0);
     shop* d = new shop(location(520, 45), 0);
@@ -32,8 +32,8 @@ MainWindow::MainWindow(QWidget *parent)
     //bullet * c = new bullet(location(windowWidth - 400, 130 + 98), 0);
     //a->setMovie(":/images/ZombieWalk2.gif");
     //a->setMovieSpeed(500);
-    scene->addItem(a1);
-    scene->addItem(a);
+    //scene->addItem(a1);
+    //scene->addItem(a);
     //scene->addItem(b);
     scene->addItem(d);
     scene->addItem(f);
@@ -56,6 +56,13 @@ MainWindow::MainWindow(QWidget *parent)
     //connect(timer, &QTimer::timeout, scene, &QGraphicsScene::advance);
     connect(timer, &QTimer::timeout, this, [&]{
         t++;
+        if (t % 137 == 0){
+            zombieBasic* a = new zombieBasic(location(windowWidth - 50, 130 + (t % 5) * 98), 0);
+            sun* c = new sun(location(t % windowWidth + 50, 0),0);
+            c->setMove();
+            scene->addItem(a);
+            scene->addItem(c);
+        }
         //qDebug()<<t;
         /*
         QList<QGraphicsItem*> li = scene->items();

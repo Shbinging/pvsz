@@ -11,7 +11,7 @@
 #include<QMimeData>
 #include<stdio.h>
 #include"shop.h"
-const QMap<int, QString> IdtoName = {{10, "SunFlower"},{11, "Peashooter"}, {20, "zombieBasic"},{31, "sun"}};
+const QMap<int, QString> IdtoName = {{10, "SunFlower"},{11, "Peashooter"}, {12, "SnowPea"},{13,"Repeater"},{14, "WallNut"}, {16, "PotatoMine"}, {20, "zombieBasic"},{31, "sun"}};
 
 card::card(location _a, int t, int _id):object(_a, t)
 {

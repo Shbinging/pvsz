@@ -50,4 +50,20 @@ public:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 };
 
+class bulletBing:public bulletNormal{
+private:
+  int coldTime;
+public:
+    bulletBing(location a, int tt):bulletNormal(a, tt){
+        coldTime = 100;
+        attack = 10;
+        live = 1;
+        name = "*";
+        speed = 1;
+        //qDebug()<<"create";
+        id = 1;
+        image = new QPixmap(getSourcePath("PeaSnow", "png"));
+    }
+    virtual void Attack();
+};
 #endif // BULLET_H

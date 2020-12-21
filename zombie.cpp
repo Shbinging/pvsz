@@ -9,9 +9,14 @@ void zombieBasic::advance(int phase)
     if (!phase){
         update();
         if (isDead()){
-            setMovie(getSourcePath("ZombieDie","gif"));
-            setHead(getSourcePath("ZombieHead","gif"));
-            if (head->frameCount() - 1 == head->currentFrameNumber()){
+            if (!isBomb){
+                setMovie(getSourcePath("ZombieDie","gif"));
+                setHead(getSourcePath("ZombieHead","gif"));
+            }
+            else{
+                setMovie(getSourcePath("Burn", "gif"));
+            }
+            if (movie->frameCount() - 1 == movie->currentFrameNumber()){
                 setDead();
             }
             return;
@@ -67,14 +72,28 @@ bool zombieNormal::collidesWithItem(const QGraphicsItem *other, Qt::ItemSelectio
     return qFuzzyCompare(other->y(), y()) && qAbs(other->x() - x()) < 30;
 }
 
+void changeBlue(QImage& p){
+    int width = p.width();
+    int height = p.height();
+    Forr(i, 0, width)
+        Forr(j, 0, height){
+            QColor col = p.pixelColor(i, j);
+            col.setBlue(254);
+            p.setPixelColor(i, j, col);
+        }
+}
 void zombieNormal::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     if (movie){
-    QImage image = movie->currentImage();
+        movie->setSpeed(1000/speed);
+        QImage image = movie->currentImage();
+        if (isCold()) changeBlue(image);
     painter->drawImage(QRectF(-70, -100, 140, 140), image);
     }
     if (head){
+        head->setSpeed(1000/speed);
         QImage image = head->currentImage();
+        if (isCold()) changeBlue(image);
         painter->drawImage(QRectF(0, -100, 140, 140), image);
     }
 }
@@ -82,4 +101,24 @@ void zombieNormal::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 QRectF zombieNormal::boundingRect() const
 {
     return QRectF(-80, -100, 200, 140);
+}
+
+bool zombieNormal::isCold()
+{
+    if (t-setColdTime == needColdTime + 1) speed /= 3;
+    return (t-setColdTime) <= needColdTime;
+}
+
+void zombieNormal::setCold(int tt)
+{
+    if (!isCold()){
+    needColdTime = tt;
+    speed *= 3;
+    setColdTime = t;
+    }
+}
+
+void zombieNormal::setBomb()
+{
+    isBomb = 1;
 }
