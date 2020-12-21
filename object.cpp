@@ -64,7 +64,6 @@ void object::setMovie(QString path)
 {
     if (oripath1 == path) return;
     oripath1 = path;
-    qDebug()<<"change";
     if (!movie){
         delete movie;
     }

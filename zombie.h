@@ -28,7 +28,7 @@ class zombieBasic: public zombieNormal{
     public:
         zombieBasic(location a, int t):zombieNormal(a, t){
             attack = 5;
-            mxheart = heart = 10;
+            mxheart = heart = 10000;
             speed = 5;
             attackSpeed = 4;
             id = 20;

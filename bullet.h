@@ -21,13 +21,33 @@ QPixmap* image;
 class bullet:public bulletNormal{
 public:
     bullet(location a, int tt):bulletNormal(a, tt){
-        attack = 200;
+        attack = 10;
         live = 1;
         name = "*";
         speed = 1;
-        qDebug()<<"create";
+        //qDebug()<<"create";
         id = 0;
         image = new QPixmap(getSourcePath("Pea", "png"));
     }
 };
+class car:public bulletNormal{
+private:
+    bool goOn;
+public:
+    car(location _a, int tt):bulletNormal(_a, tt){
+        attack = 100000;
+        live = 1;
+        name = "*";
+        speed = 1;
+        //qDebug()<<"create";
+        id = 5;
+        image = new QPixmap(getSourcePath("LawnMower", "png"));
+        goOn = 0;
+    }
+    void Attack();
+    void Move(int t);
+    QRectF boundingRect() const override;
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
+};
+
 #endif // BULLET_H

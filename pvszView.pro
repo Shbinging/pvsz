@@ -10,21 +10,29 @@ CONFIG += c++11
 
 SOURCES += \
     bullet.cpp \
+    card.cpp \
     main.cpp \
     mainwindow.cpp \
+    map.cpp \
     object.cpp \
     plant.cpp \
     pzcreator.cpp \
+    shop.cpp \
+    shovel.cpp \
     timerUse.cpp \
     zombie.cpp
 
 HEADERS += \
     bullet.h \
+    card.h \
     config.h \
     mainwindow.h \
+    map.h \
     object.h \
     plant.h \
     pzcreator.h \
+    shop.h \
+    shovel.h \
     timerUse.h \
     zombie.h
 

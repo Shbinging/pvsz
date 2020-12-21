@@ -27,7 +27,7 @@ void bulletNormal::Attack()
         if (isZombie(tmp->getId()) && !tmp->isDead()) {
             tmp->subHeart(attack);
             setDead();
-            qDebug()<< "dead!!!";
+            //qDebug()<< "dead!!!";
             return;
         }
     }
@@ -44,8 +44,41 @@ void bulletNormal::Move(int t)
 void bulletNormal::advance(int phase)
 {
     if (!phase){
+        if (getLocation().x > windowWidth * 2) scene()->removeItem(this);
         update();
         Attack();
         Move(t);
     }
+}
+
+
+void car::Attack()
+{
+    QList<QGraphicsItem*> g = collidingItems();
+    Forr(i, 0, g.size()) {
+        object* tmp =qgraphicsitem_cast<object*> (g[i]);
+        if (isZombie(tmp->getId()) && !tmp->isDead()) {
+            tmp->subHeart(attack);
+            goOn = 1;
+        }
+    }
+}
+
+void car::Move(int t)
+{
+    if (!((t - setTime) % speed) && t - setTime > 0 && goOn){
+        location tmp = getLocation();
+        setLocation(location(tmp.x + 5, tmp.y));
+    }
+}
+
+QRectF car::boundingRect() const
+{
+    return QRectF(-30, -30, 60, 60);
+}
+
+void car::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+{
+    if (image)
+        painter->drawPixmap(QRect(-30, -30, 60, 60), *image);
 }
