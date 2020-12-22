@@ -136,4 +136,40 @@ public:
     bool collidesWithItem(const QGraphicsItem *other, Qt::ItemSelectionMode mode) const override;
     void setbomb();
 };
+
+class plantCherrish :public plantNormal {
+protected:
+    bool isBomb;
+public:
+    plantCherrish(location a, int t) :plantNormal(a, t) {
+        money = 150;
+        mxheart = heart = 30;
+        attack = 5;
+        speed = 2;
+        name = "";
+        id = 17;
+        coldTime = 10;
+        isBomb = 0;
+    }
+    void advance(int phase);
+    bool collidesWithItem(const QGraphicsItem *other, Qt::ItemSelectionMode mode) const override;
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+};
+
+class plantNan :public plantNormal {
+public:
+    plantNan(location a, int t) :plantNormal(a, t) {
+        money = 200;
+        mxheart = heart = 200;
+        attack = 5;
+        speed = 2;
+        name = "";
+        id = 30;
+        two = 1;
+        coldTime = 10;
+    }
+    void advance(int phase);
+    QRectF boundingRect() const;
+};
+
 #endif // PLANT_H

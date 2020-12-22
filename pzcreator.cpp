@@ -14,7 +14,9 @@ object *pzCreator::createObject(int id, location x, int t)
         makeo(13, plantShuangfa)
         makeo(14, plantNut)
         makeo(16, plantWogua)
+        makeo(17, plantCherrish)
         makeo(20, zombieBasic)
+        makeo(30, plantNan)
         makeo(31, sun)
     }
     return p;

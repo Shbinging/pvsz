@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     QTimer* timer = new QTimer;
     this->setFixedSize(windowWidth, windowHeight);
+    //this->setMinimumSize(windowWidth, windowHeight);
     scene = new QGraphicsScene(this);
     scene->setSceneRect(150, 0, windowWidth, windowHeight);
     scene->setItemIndexMethod(QGraphicsScene::NoIndex);
@@ -56,11 +57,14 @@ MainWindow::MainWindow(QWidget *parent)
     //connect(timer, &QTimer::timeout, scene, &QGraphicsScene::advance);
     connect(timer, &QTimer::timeout, this, [&]{
         t++;
-        if (t % 137 == 0){
-            zombieBasic* a = new zombieBasic(location(windowWidth - 50, 130 + (t % 5) * 98), 0);
+        if (t % 13 == 0){
+            zombieBasic* a = new zombieBasic(location(windowWidth + 150, 130 + (t % 5) * 98), 0);
+            scene->addItem(a);
+
+        }
+        if (t%133 == 0){
             sun* c = new sun(location(t % windowWidth + 50, 0),0);
             c->setMove();
-            scene->addItem(a);
             scene->addItem(c);
         }
         //qDebug()<<t;

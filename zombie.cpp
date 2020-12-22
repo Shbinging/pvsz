@@ -6,6 +6,7 @@
 #include<QPainter>
 void zombieBasic::advance(int phase)
 {
+    setZValue(2);
     if (!phase){
         update();
         if (isDead()){

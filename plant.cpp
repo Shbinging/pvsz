@@ -84,11 +84,12 @@ sun::sun(location a, int t):plantNormal(a, t)
     sunX = 40;
     sunY = 20;
     id = 31;
-    attack = 50;
+    attack = 500;
 }
 
 void sun::advance(int phase)
 {
+    setZValue(10);
     if (!phase){
         update();
         setMovie(getSourcePath("Sun","gif"));
@@ -146,7 +147,6 @@ void sun::mousePressEvent(QGraphicsSceneMouseEvent *event)
     destX = sunLocationX;
     destY = sunLocationY;
     speed = 0;
-    setZValue(1);
     setMove();
 }
 
@@ -314,4 +314,76 @@ bool plantWogua::collidesWithItem(const QGraphicsItem *other, Qt::ItemSelectionM
 void plantWogua::setbomb()
 {
     isBomb = 1;
+}
+
+void plantCherrish::advance(int phase)
+{
+    update();
+    if (!phase){
+        if (t - setTime > speed){
+            if (!isBomb){
+                setMovie(getSourcePath("CherryBomb","gif"));
+                if (movie->frameCount() - 1 == movie->currentFrameNumber()){
+                    isBomb = 1;
+                    QList<QGraphicsItem*> g = collidingItems();
+                    bool f = 0;
+                    Forr(i, 0, g.size()) {
+                        object* tmp =qgraphicsitem_cast<object*> (g[i]);
+                        if (isZombie(tmp->getId()) && !tmp->isDead()) {
+                            zombieNormal* tmp1 = qgraphicsitem_cast<zombieNormal*> (tmp);
+                            tmp1->setHeart(-1);
+                            tmp1->setBomb();
+                            f = 1;
+                        }
+                    }
+                }
+            }
+            else{
+                setMovie(getSourcePath("Boom","gif"));
+                if (movie->frameCount() - 1 == movie->currentFrameNumber()){
+                    setDead();
+                }
+            }
+        }
+    }
+}
+
+bool plantCherrish::collidesWithItem(const QGraphicsItem *other, Qt::ItemSelectionMode mode) const
+{
+    return qAbs(other->x() - x()) < 80*1.5 && qAbs(other->y() - y()) < 98*1.5;
+}
+
+void plantCherrish::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+{
+    if (movie){
+    QImage image = movie->currentImage();
+    QRectF tmp = boundingRect();
+    if (isBomb) tmp = QRectF(-35 * 3, -35 * 3, 70 * 3, 70 * 3);
+
+        painter->drawImage(tmp, image);
+    }
+    if (head){
+        QImage image = head->currentImage();
+        painter->drawImage(boundingRect(), image);
+    }
+}
+
+void plantNan::advance(int phase)
+{
+    setZValue(1);
+    update();
+    if (!phase){
+        if (isDead()){
+            setDead();
+            return;
+        }
+        if (heart >= 2.0/3 * mxheart) setMovie(getSourcePath("Pumpkin","gif"));
+        else if (heart >= 1.0/3 * mxheart) setMovie(getSourcePath("pumpkin1", "gif"));
+        else setMovie(getSourcePath("Pumpkin2", "gif"));
+    }
+}
+
+QRectF plantNan::boundingRect() const
+{
+    return QRectF(-40, -10, 80, 50);
 }

@@ -1,9 +1,9 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#define isPlant(x) ((x/10 == 1) || (x / 10 == 3))
+#define isPlant(x) (((x/10 == 1) || (x / 10 == 3)) && (x != 31))
 #define isZombie(x) ((x/10 == 2))
-#define isProtecter(x) ((x/10 == 3))
+#define isProtecter(x) ((x/10 == 3) &&(x != 31))
 #define isCrad(x) ((x / 10) == 4)
 #define Forr(i, l, r) for(int i = l; i < r; i++)
 #define For(i, l, r) for(int i = l; i <= r; i++)

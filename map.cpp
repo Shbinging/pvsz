@@ -8,7 +8,7 @@
 #include<stdio.h>
 #include"shovel.h"
 #include<QList>
-QList<int> l ={10, 11, 12, 13, 14, 16};
+QList<int> l ={10, 30, 12, 13, 14, 16, 17};
 Map::Map(location a, int t):object(a,t)
 {
     can = 1;
@@ -139,7 +139,7 @@ void Map::dropEvent(QGraphicsSceneDragDropEvent *event)
 void Map::setCard()
 {
     Forr(i, 0, l.size()){
-        card* p = new card(location(375 + 65 * i, 45), 0, l[i]);
+        card* p = new card(location(375 + 60 * i, 45), 0, l[i]);
         scene()->addItem(p);
     }
 }

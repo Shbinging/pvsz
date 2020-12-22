@@ -48,5 +48,9 @@
         <file>images/ZombiesWon.png</file>
         <file>images/ZombieWalk1.gif</file>
         <file>images/ZombieWalk2.gif</file>
+        <file>images/Pumpkin.gif</file>
+        <file>images/Pumpkin.png</file>
+        <file>images/pumpkin1.gif</file>
+        <file>images/Pumpkin2.gif</file>
     </qresource>
 </RCC>

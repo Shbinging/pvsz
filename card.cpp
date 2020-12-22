@@ -11,7 +11,7 @@
 #include<QMimeData>
 #include<stdio.h>
 #include"shop.h"
-const QMap<int, QString> IdtoName = {{10, "SunFlower"},{11, "Peashooter"}, {12, "SnowPea"},{13,"Repeater"},{14, "WallNut"}, {16, "PotatoMine"}, {20, "zombieBasic"},{31, "sun"}};
+const QMap<int, QString> IdtoName = {{10, "SunFlower"},{11, "Peashooter"}, {12, "SnowPea"},{13,"Repeater"},{14, "WallNut"}, {17, "CherryBomb"}, {16, "PotatoMine"}, {20, "zombieBasic"},{30, "Pumpkin"}, {31, "sun"}};
 
 card::card(location _a, int t, int _id):object(_a, t)
 {
@@ -76,7 +76,7 @@ void card::advance(int phase)
 void card::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     //qDebug()<<"new" << candrag;
-    if (!candrag) return;
+    if (!candrag){ event->ignore();return;}
     //qDebug()<<"new";
     QDrag* drag = new QDrag(this);
     QMimeData* mime = new QMimeData;
