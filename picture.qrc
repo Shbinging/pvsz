@@ -52,5 +52,21 @@
         <file>images/Pumpkin.png</file>
         <file>images/pumpkin1.gif</file>
         <file>images/Pumpkin2.gif</file>
+        <file>images/PoleVaultingZombie.gif</file>
+        <file>images/PoleVaultingZombieAttack.gif</file>
+        <file>images/PoleVaultingZombieHead.gif</file>
+        <file>images/PoleVaultingZombieJump.gif</file>
+        <file>images/PoleVaultingZombieWalk.gif</file>
+        <file>images/PoleVaultingZombieJump2.gif</file>
+        <file>images/PoleVaultingZombieDie.gif</file>
+        <file>images/BoomDie.gif</file>
+        <file>images/trophy.png</file>
+        <file>images/win.jpg</file>
+        <file>images/NewspaperZombie1.gif</file>
+        <file>images/NewspaperZombie2.gif</file>
+        <file>images/NewspaperZombieAttack1.gif</file>
+        <file>images/NewspaperZombieAttack2.gif</file>
+        <file>Grazy Dave.mp3</file>
+        <file>Grazy Dave.wav</file>
     </qresource>
 </RCC>

@@ -64,10 +64,10 @@ public:
         money = 25;
         mxheart = heart = 20;
         attack = 50;//sun
-        speed = 300;
+        speed = 200;
         name = "̫";
         id = 10;
-        coldTime = 10;
+        coldTime = 30;
     }
     bool isGetSun(int t);
     void advance(int phase);
@@ -78,7 +78,7 @@ public:
     plantHanbing(location a, int t) :plantNormal(a, t) {
         money = 150;
         mxheart = heart = 70;
-        attack = 5;
+        attack = 10;
         speed = 20;
         name = "";
         id = 12;
@@ -93,7 +93,7 @@ public:
     plantShuangfa(location a, int t) :plantNormal(a, t) {
         money = 150;
         mxheart = heart = 70;
-        attack = 5;
+        attack = 10;
         speed = 20;
         name = "";
         id = 13;
@@ -112,7 +112,7 @@ public:
         speed = 2;
         name = "";
         id = 14;
-        coldTime = 50;
+        coldTime = 100;
     }
     void advance(int phase);
 };
@@ -122,14 +122,14 @@ protected:
     bool isBomb;
 public:
     plantWogua(location a, int t) :plantNormal(a, t) {
-        money = 150;
+        money = 200;
         mxheart = heart = 50;
         attack = 5;
         speed = 40;
         name = "";
         id = 16;
         isBomb = 0;
-        coldTime = 100;
+        coldTime = 200;
     }
     void advance(int phase);
     bool isGrown(int t);
@@ -142,13 +142,13 @@ protected:
     bool isBomb;
 public:
     plantCherrish(location a, int t) :plantNormal(a, t) {
-        money = 150;
+        money = 300;
         mxheart = heart = 30;
         attack = 5;
         speed = 2;
         name = "";
         id = 17;
-        coldTime = 10;
+        coldTime = 300;
         isBomb = 0;
     }
     void advance(int phase);
@@ -166,7 +166,7 @@ public:
         name = "";
         id = 30;
         two = 1;
-        coldTime = 10;
+        coldTime = 300;
     }
     void advance(int phase);
     QRectF boundingRect() const;

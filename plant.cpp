@@ -84,7 +84,7 @@ sun::sun(location a, int t):plantNormal(a, t)
     sunX = 40;
     sunY = 20;
     id = 31;
-    attack = 500;
+    attack = 50;
 }
 
 void sun::advance(int phase)
@@ -291,6 +291,11 @@ void plantWogua::advance(int phase)
                 object* tmp =qgraphicsitem_cast<object*> (g[i]);
                 if (isZombie(tmp->getId()) && !tmp->isDead()) {
                     zombieNormal* tmp1 = qgraphicsitem_cast<zombieNormal*> (tmp);
+                    if (tmp1->getId() == 23){
+                        zombieGan* tmp2 = qgraphicsitem_cast<zombieGan*>(tmp1);
+                        qDebug()<<"get "<<tmp2->getDrop();
+                        if (tmp2->getDrop() <= 3) continue;
+                    }
                     tmp1->setHeart(-1);
                     tmp1->setBomb();
                     f = 1;

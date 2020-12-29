@@ -50,4 +50,64 @@ class zombieBasic: public zombieNormal{
     void Move(int t);
     void advance(int phase) override;
 };
+
+class zombieLu: public zombieNormal{
+protected:
+    bool isDrop;
+    public:
+        zombieLu(location a, int t):zombieNormal(a, t){
+            attack = 5;
+            mxheart = heart = 100;
+            speed = 5;
+            attackSpeed = 8;
+            id = 21;
+            score = 5;
+            name = "僵";
+        }
+    void Attack(int t);
+    void Move(int t);
+    void advance(int phase) override;
+};
+
+class zombieBao: public zombieNormal{
+protected:
+    bool isDrop;
+    public:
+        zombieBao(location a, int t):zombieNormal(a, t){
+            attack = 5;
+            mxheart = heart = 400;
+            speed = 5;
+            attackSpeed = 8;
+            id = 21;
+            score = 5;
+            isDrop = 0;
+            name = "僵";
+        }
+    void Attack(int t);
+    void Move(int t);
+    void advance(int phase) override;
+};
+
+class zombieGan: public zombieNormal{
+protected:
+    int isDrop;
+    public:
+        zombieGan(location a, int t):zombieNormal(a, t){
+            attack = 5;
+            mxheart = heart = 40;
+            speed = 5;
+            attackSpeed = 8;
+            id = 23;
+            score = 5;
+            isDrop = 0;
+            name = "僵";
+        }
+    int getDrop();
+    void Attack(int t);
+    void Move(int t);
+    void advance(int phase) override;
+    QRectF boundingRect() const override;
+    bool collidesWithItem(const QGraphicsItem *other, Qt::ItemSelectionMode mode) const override;
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
+};
 #endif // ZOMBIE_H

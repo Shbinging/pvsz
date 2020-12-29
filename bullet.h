@@ -21,7 +21,7 @@ QPixmap* image;
 class bullet:public bulletNormal{
 public:
     bullet(location a, int tt):bulletNormal(a, tt){
-        attack = 10;
+        attack = 12;
         live = 1;
         name = "*";
         speed = 1;
@@ -56,7 +56,7 @@ private:
 public:
     bulletBing(location a, int tt):bulletNormal(a, tt){
         coldTime = 100;
-        attack = 10;
+        attack = 15;
         live = 1;
         name = "*";
         speed = 1;

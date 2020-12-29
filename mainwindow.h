@@ -14,7 +14,10 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 private:
+    int interval, tt;
     QGraphicsScene* scene;
     QGraphicsView * view;
+    void checkLose();
+    QTimer*  timer;
 };
 #endif // MAINWINDOW_H
