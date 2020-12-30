@@ -25,7 +25,6 @@ void Button::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     else{
         if (!ok){
             painter->drawText(boundingRect(), Qt::AlignCenter, "START");
-            ok = 1;
         }else
         painter->drawText(boundingRect(), Qt::AlignCenter, "CONTINUE");
        }
@@ -36,11 +35,12 @@ void Button::mousePressEvent(QGraphicsSceneMouseEvent *event)
     if (event->button() == Qt::LeftButton)
     {
         if (timer->isActive())
-        {
+        {           
             timer->stop();
         }
         else
         {
+            ok = 1;
             timer->start(50);
         }
     }
